@@ -5,9 +5,16 @@ import {
     Dimensions,
 } from 'react-native';
 
+/**
+ * Default Styles
+ */
 var width = Dimensions.get('window').width;
 
-//width: width * .8
+//var color1 = '#E97C5F'; // light red
+var color1 = '#E95637'; // light red
+//var color2 = '#08C5B1'; // blue
+var color2 = '#04C0C5'; // blue
+//var color1 = '#e97c5f';
 
 var defaultStyles = StyleSheet.create({
     buttonText: {
@@ -109,37 +116,84 @@ var defaultStyles = StyleSheet.create({
         alignItems: 'center',
     },
     snippetWrap: { // start snippets - move this to a new file?
-        //backgroundColor: '#DDD',
         backgroundColor: '#FFF',
-        //flexBasis: 0.9,
         marginTop: 15,
         marginBottom: 15,
         width: width * .9,
-        shadowColor: 'red',
-        shadowOffset: {width: 1, height: 1},
+        shadowColor: '#000',
+        shadowOffset: {width: 0.5, height: 0.5},
+        shadowOpacity: 0.1,
+        paddingBottom: 5,
     },
     listingImage: {
         flex: 1,
-        height: 200,
+        height: 240,
+    },
+    priceButtonBlock: {
+        flexDirection: 'row',
     },
     price: {
-        fontSize: 30,
-        color: '#333',
+        fontSize: 32,
+        color: color2,
         fontWeight: 'bold',
         textAlign: 'center',
-        padding: 3,
+        paddingTop: 4,
+        paddingBottom: 3,
+        flex: 1,
+    },
+    viewDetailsButton: {
+        backgroundColor: color1,
+        marginTop: 8,
+        marginBottom: 8,
+        marginLeft: 8,
+        marginRight: 15,
+        justifyContent: 'center',
+        borderRadius: 5,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
+    },
+    viewDetails: {
+        color: '#FFF',
+        fontWeight: 'bold',
+        fontSize: 15,
+        textAlign: 'center',
+    },
+    addressMlsWrap: {
+        //backgroundColor: 'red',
+        flexDirection: 'row',
+    },
+    addressBlock: {
+        //backgroundColor: 'blue',
+        backgroundColor: '#FAFAFA',
+        borderColor: '#F4F4F4',
+        borderWidth: 1,
+        margin: 10,
+        paddingTop: 3,
+        paddingBottom: 3,
+        paddingLeft: 5,
+        paddingRight: 5,
+    },
+    mlsBlock: {
+        flex: 1,
+    },
+    mlsNumber: {
+        paddingTop: 10,
+        textAlign: 'center',
+        fontWeight: 'bold',
+        color: '#666',
     },
     street: {
-        color: '#777',
+        color: '#555',
         fontWeight: 'bold',
-        textAlign: 'center',
         padding: 3,
     },
     addressDetails: {
-        color: '#888',
+        color: '#777',
         fontWeight: 'bold',
-        textAlign: 'center',
         padding: 3,
+        fontSize: 12,
     },
     listingDetails: {
         flexDirection: 'row',
@@ -150,6 +204,17 @@ var defaultStyles = StyleSheet.create({
         textAlign: 'center',
         flex: 1,
         padding: 3,
+        fontSize: 13,
+    },
+    svgWrap: {
+        backgroundColor: 'red',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+    },
+    svgPath: {
+        color: 'blue',
+        flex: 1,
     }
 });
 

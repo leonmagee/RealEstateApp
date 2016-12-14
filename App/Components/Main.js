@@ -3,6 +3,10 @@ import SearchResults from './SearchResults';
 var ReactNative = require('react-native');
 var defaultStyles = require('./DefaultStyles');
 var api = require('../Utils/api');
+var SvgElement = require('./SvgElement');
+var svg_baths = require('../SVG/baths.js');
+var svg_beds = require('../SVG/beds.js');
+var svg_sqft = require('../SVG/sqft.js');
 
 var {
     Text,
@@ -49,8 +53,9 @@ var TestListing = [
             zip: '06385',
         },
         baths: {
-            full_baths: 2,
+            full: 2,
         },
+        sqft: 1234,
         beds: 2,
         id: '09224119',
         images: ['http://photos.mredllc.com/photos/property/119/09224119.jpg'],
@@ -66,6 +71,7 @@ var TestListing = [
         baths: {
             full: 2,
         },
+        sqft: 934,
         beds: 2,
         id: '09224119',
         images: ['http://photos.mredllc.com/photos/property/119/09224119.jpg'],
@@ -84,6 +90,10 @@ class Main extends Component {
         }
     }
 
+    singleListing() {
+        console.log('view details clicked!');
+    }
+
     renderListings() { // goes in SearchResults file - here for design testing
         return TestListing.map((listing, index) => {
             let image_url = listing.images[0].replace('http', 'https');
@@ -93,14 +103,39 @@ class Main extends Component {
                         style={defaultStyles.listingImage}
                         source={{uri: image_url}}
                     />
-                    <Text style={defaultStyles.price}>${listing.listPrice}</Text>
-                    <Text style={defaultStyles.street}>Street: {listing.address.street}</Text>
-                    <Text style={defaultStyles.addressDetails}>
-                        {listing.address.city}, {listing.address.state} {listing.address.zip}
-                    </Text>
+                    <View style={defaultStyles.priceButtonBlock}>
+                        <Text style={defaultStyles.price}>${listing.listPrice}</Text>
+                        <TouchableHighlight
+                            onPress={() => this.singleListing()}
+                            style={defaultStyles.viewDetailsButton}
+                        >
+                            <Text style={defaultStyles.viewDetails}>VIEW DETAILS</Text>
+                        </TouchableHighlight>
+                    </View>
+                    <View style={defaultStyles.addressMlsWrap}>
+                        <View style={defaultStyles.addressBlock}>
+                            <Text style={defaultStyles.street}>{listing.address.street}</Text>
+                            <Text style={defaultStyles.addressDetails}>
+                                {listing.address.city}, {listing.address.state} {listing.address.zip}
+                            </Text>
+                        </View>
+                        <View style={defaultStyles.mlsBlock}>
+                            <Text style={defaultStyles.mlsNumber}>MLS: {listing.id}</Text>
+                        </View>
+                    </View>
                     <View style={defaultStyles.listingDetails}>
-                        <Text style={defaultStyles.detailItem}>{listing.beds} Beds</Text>
-                        <Text style={defaultStyles.detailItem}>{listing.baths.full} Baths</Text>
+                        <View>
+                            <SvgElement svg_data={svg_beds}/>
+                            <Text style={defaultStyles.detailItem}>{listing.beds} BEDS</Text>
+                        </View>
+                        <View>
+                            <SvgElement svg_data={svg_baths}/>
+                            <Text style={defaultStyles.detailItem}>{listing.baths.full} BATHS</Text>
+                        </View>
+                        <View>
+                            <SvgElement svg_data={svg_sqft}/>
+                            <Text style={defaultStyles.detailItem}>{listing.sqft} SQFT</Text>
+                        </View>
                     </View>
                 </View>
             )
