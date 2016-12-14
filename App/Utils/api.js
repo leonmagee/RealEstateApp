@@ -3,7 +3,7 @@ var api = {
         var url = `https://slipstream.homejunction.com/ws/api/authenticate?license=877C-0626-DE4C-54BF&version=v20160226`;
         return fetch(url).then((res) => res.json());
     },
-    getListings(token) {
+    getListings(token, city_input) {
 
         let market = 'mred';
         let images = 'true';
@@ -11,13 +11,16 @@ var api = {
         let extended = 'false';
         let features = 'true';
         let page_size = '5';
+        let property_type = 'Attached Single';
+        let city = city_input;
         //let status = 'Pending';
+        //let status = 'Active|New|Contingent|Re-activated|Price Change';
         let status = 'Active|New|Contingent|Re-activated|Price Change';
         let page_number = '1';
 
         // let url = 'https://slipstream.homejunction.com/ws/listings/search?market=' + market + '&listingType=residential&propertyType=Attached Single&pageSize=' + page_size + '&images=' + images + '&details=' + details + '&extended=' + extended + '&features=' + features + '&status=' + status + '&pageNumber=' + page_number;
 
-        let url = 'https://slipstream.homejunction.com/ws/listings/search?market=' + market + '&listingType=residential&pageSize=' + page_size + '&images=' + images;
+        let url = 'https://slipstream.homejunction.com/ws/listings/search?market=' + market + '&listingType=residential&pageSize=' + page_size + '&images=' + images + '&details=' + details + '&extended=' + extended + '&features=' + features + '&propertyType=' + property_type + '&status=' + status + '&city=' + city;
 
 
         console.log(url);

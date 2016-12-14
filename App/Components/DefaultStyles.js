@@ -7,6 +7,8 @@ import {
 
 /**
  * Default Styles
+ * @todo refactor this - remove old CR stuff
+ * @todo choose new color scheme?
  */
 var width = Dimensions.get('window').width;
 
@@ -133,7 +135,7 @@ var defaultStyles = StyleSheet.create({
         flexDirection: 'row',
     },
     price: {
-        fontSize: 32,
+        fontSize: 30,
         color: color2,
         fontWeight: 'bold',
         textAlign: 'center',
@@ -146,7 +148,7 @@ var defaultStyles = StyleSheet.create({
         marginTop: 8,
         marginBottom: 8,
         marginLeft: 8,
-        marginRight: 15,
+        marginRight: 25,
         justifyContent: 'center',
         borderRadius: 5,
         paddingLeft: 10,
@@ -160,10 +162,10 @@ var defaultStyles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
     },
-    addressMlsWrap: {
-        //backgroundColor: 'red',
-        flexDirection: 'row',
-    },
+    // addressMlsWrap: {
+    //     //backgroundColor: 'red',
+    //     flexDirection: 'row',
+    // },
     addressBlock: {
         //backgroundColor: 'blue',
         backgroundColor: '#FAFAFA',
@@ -175,9 +177,9 @@ var defaultStyles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
     },
-    mlsBlock: {
-        flex: 1,
-    },
+    // mlsBlock: {
+    //     flex: 1,
+    // },
     mlsNumber: {
         paddingTop: 10,
         textAlign: 'center',
@@ -197,24 +199,24 @@ var defaultStyles = StyleSheet.create({
     },
     listingDetails: {
         flexDirection: 'row',
+        paddingTop: 5,
+        paddingBottom: 5,
+        //paddingLeft: 15,
+        //paddingRight: 13,
+        //alignItems: 'center',
+        justifyContent: 'center',
     },
     detailItem: {
         color: '#555',
         fontWeight: 'bold',
         textAlign: 'center',
-        flex: 1,
-        padding: 3,
+        paddingTop: 5,
+        paddingBottom: 3,
+        marginRight: 6,
         fontSize: 13,
     },
-    svgWrap: {
-        backgroundColor: 'red',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-    },
-    svgPath: {
-        color: 'blue',
-        flex: 1,
+    detailSvg: {
+        marginLeft: 6,
     }
 });
 

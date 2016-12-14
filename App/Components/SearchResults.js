@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 var ReactNative = require('react-native');
 var defaultStyles = require('./DefaultStyles');
+var SvgElement = require('./SvgElement');
+var svg_baths = require('../SVG/baths.js');
+var svg_beds = require('../SVG/beds.js');
+var svg_sqft = require('../SVG/sqft.js');
 
 var {
     Text,
@@ -9,7 +13,7 @@ var {
     StyleSheet,
     Image,
     // TextInput,
-    // TouchableHighlight,
+    TouchableHighlight,
     // ActivityIndicator,
 } = ReactNative;
 
@@ -27,37 +31,6 @@ var styles = StyleSheet.create({
     },
 });
 
-// var testResults = [
-//     {
-//         address: '9 Lee Rd.',
-//         city: 'Waterford',
-//         state: 'CT',
-//         zip: '06385',
-//         beds: 3,
-//         baths: 1.5,
-//         sqft: 1234,
-//     },
-//     {
-//         address: '790 Camino de la Reina',
-//         city: 'San Diego',
-//         state: 'CA',
-//         zip: '92108',
-//         beds: 2,
-//         baths: 2,
-//         sqft: 987,
-//     },
-// ];
-
-// var testSearchResults = testResults.map((item, index ) => {
-//
-//     return (
-//         <View key={index}>
-//             <Text>Address: {item.address}</Text>
-//             <Text>Beds: {item.beds}</Text>
-//         </View>
-//     )
-// });
-
 class SearchResults extends Component {
 
     constructor(props) {
@@ -70,38 +43,75 @@ class SearchResults extends Component {
         }
     }
 
+
     renderListings() {
         return this.state.listings.map((listing, index) => {
             let image_url = listing.images[0].replace('http', 'https');
             return (
-                <View style={styles.snippetWrap} key={index}>
+                <View style={defaultStyles.snippetWrap} key={index}>
                     <Image
-                        style={styles.listingImage}
+                        style={defaultStyles.listingImage}
                         source={{uri: image_url}}
                     />
-                    <Text style={styles.price}>${listing.listPrice}</Text>
-                    <Text style={styles.street}>Street: {listing.address.street}</Text>
-                    <Text style={styles.addressDetails}>
-                        {listing.address.city}, {listing.address.state} {listing.address.zip}
-                    </Text>
-                    <View style={styles.listingDetails}>
-                        <Text style={styles.detailItem}>{listing.beds} Beds</Text>
-                        <Text style={styles.detailItem}>{listing.baths.full} Baths</Text>
+                    <View style={defaultStyles.priceButtonBlock}>
+                        <Text style={defaultStyles.price}>${listing.listPrice}</Text>
+                        <TouchableHighlight
+                            onPress={() => this.singleListing()}
+                            style={defaultStyles.viewDetailsButton}
+                        >
+                            <Text style={defaultStyles.viewDetails}>VIEW DETAILS</Text>
+                        </TouchableHighlight>
+                    </View>
+                    <View style={defaultStyles.addressBlock}>
+                        <Text style={defaultStyles.street}>{listing.address.street}</Text>
+                        <Text style={defaultStyles.addressDetails}>
+                            {listing.address.city}, {listing.address.state} {listing.address.zip}
+                        </Text>
+                    </View>
+                    <View style={defaultStyles.listingDetails}>
+                        <SvgElement svg_data={svg_beds}/>
+                        <Text style={defaultStyles.detailItem}>{listing.beds} BEDS</Text>
+                        <SvgElement svg_data={svg_baths}/>
+                        <Text style={defaultStyles.detailItem}>{listing.baths.full} BATHS</Text>
+                        <SvgElement svg_data={svg_sqft}/>
+                        <Text style={defaultStyles.detailItem}>{listing.size} SQFT</Text>
                     </View>
                 </View>
             )
         });
     }
 
+    //
+    // renderListings() {
+    //     return this.state.listings.map((listing, index) => {
+    //         let image_url = listing.images[0].replace('http', 'https');
+    //         return (
+    //             <View style={styles.snippetWrap} key={index}>
+    //                 <Image
+    //                     style={styles.listingImage}
+    //                     source={{uri: image_url}}
+    //                 />
+    //                 <Text style={styles.price}>${listing.listPrice}</Text>
+    //                 <Text style={styles.street}>Street: {listing.address.street}</Text>
+    //                 <Text style={styles.addressDetails}>
+    //                     {listing.address.city}, {listing.address.state} {listing.address.zip}
+    //                 </Text>
+    //                 <View style={styles.listingDetails}>
+    //                     <Text style={styles.detailItem}>{listing.beds} Beds</Text>
+    //                     <Text style={styles.detailItem}>{listing.baths.full} Baths</Text>
+    //                 </View>
+    //             </View>
+    //         )
+    //     });
+    // }
+
     render() {
         return (
-            <View style={styles.container}>
-                <ScrollView>
-                    <Text>Top of Page</Text>
-                    <Text>City: {this.state.city}</Text>
+            <ScrollView>
+                <View style={defaultStyles.snippetContainer}>
                     {this.renderListings()}
-                </ScrollView>
-            </View>
+                </View>
+            </ScrollView>
         )
     }
 }

@@ -31,13 +31,14 @@ class SvgElement extends Component {
     render() {
         var svg_paths = this.state.svg_data.map((item, index) => {
             return (
-                <Path key={index} x="3" y="3" style={defaultStyles.svgPath} scale="0.05" height="100" width="100" d={item} />
+                <Path key={index} x="3" y="3" fill="#555" scale="0.04" height="100" width="100" d={item} />
             )
         });
         return (
-            <Svg style={defaultStyles.svgWrap}
-                height="32"
-                width="32"
+            <Svg
+                height="30"
+                width="30"
+                style={defaultStyles.detailSvg}
             >
                 {svg_paths}
             </Svg>
