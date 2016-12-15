@@ -30,9 +30,9 @@ var styles = StyleSheet.create({
     textWrap: {
         color: '#F7F7F7',
         backgroundColor: 'transparent',
-        fontSize: 30,
+        fontSize: 28,
         textAlign: 'center',
-        //marginTop: 45,
+        marginBottom: 15,
         fontWeight: 'bold',
         textShadowColor: '#000',
         textShadowOffset: {width: 1, height: 1},
@@ -46,7 +46,8 @@ class Main extends Component {
         this.state = {
             isLoading: false,
             error: false,
-            city: 'Winfield',
+            //city: 'Winfield',
+            city: 'Chicago',
         }
     }
 
@@ -80,9 +81,9 @@ class Main extends Component {
     render() {
 
         return (
-            <Image source={require('../Assets/img/homepage-houses-bg.png')} style={styles.container}>
+            <Image source={require('../Assets/img/homepage-dark-bg.png')} style={styles.container}>
                 <View style={styles.container}>
-                    <Text style={styles.textWrap}>Home Junction</Text>
+                    <Text style={styles.textWrap}>SEARCH SAN DIEGO</Text>
                     <TextInput
                         style={defaultStyles.input}
                         autoCapitalize="none"

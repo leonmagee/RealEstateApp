@@ -27,11 +27,6 @@ var defaultStyles = StyleSheet.create({
     },
     button: {
         height: 45,
-        //flex: 1,
-        //flexDirection: 'row',
-        //flexDirection: 'column',
-        // backgroundColor: '#08C5B1',
-        // borderColor: '#08C5B1',
         borderWidth: 1,
         borderRadius: 8,
         marginBottom: 10,
@@ -68,23 +63,9 @@ var defaultStyles = StyleSheet.create({
         width: 12,
         marginRight: 4,
     },
-    dotColorBlue: {
-        // need to build this out....
-    },
-    dot2: {
-        backgroundColor: '#e97c5f',
-        borderRadius: 5,
-        height: 10,
-        width: 10,
-        marginRight: 4,
-    },
     separator: {
         height: 1,
         backgroundColor: '#DDD',
-    },
-    separator2: {
-        height: 0.5,
-        backgroundColor: '#DEDEDE',
     },
     outerWrap: {
         flex: 1,
@@ -111,7 +92,6 @@ var defaultStyles = StyleSheet.create({
         color: '#111',
         marginTop: 5,
         marginBottom: 4,
-        //backgroundColor: 'transparent'
     },
     snippetContainer: {
         backgroundColor: '#F5F5F5',
@@ -127,6 +107,8 @@ var defaultStyles = StyleSheet.create({
         shadowOpacity: 0.1,
         paddingBottom: 5,
     },
+    listingContainer: {},
+    listingWrap: {},
     listingImage: {
         flex: 1,
         height: 240,
@@ -142,6 +124,14 @@ var defaultStyles = StyleSheet.create({
         paddingTop: 4,
         paddingBottom: 3,
         flex: 1,
+    },
+    mls: {
+        fontSize: 17,
+        color: '#444',
+        paddingTop: 13,
+        paddingBottom: 7,
+        flex: 1,
+        fontWeight: 'bold',
     },
     viewDetailsButton: {
         backgroundColor: color1,
@@ -201,9 +191,6 @@ var defaultStyles = StyleSheet.create({
         flexDirection: 'row',
         paddingTop: 5,
         paddingBottom: 5,
-        //paddingLeft: 15,
-        //paddingRight: 13,
-        //alignItems: 'center',
         justifyContent: 'center',
     },
     detailItem: {
@@ -217,7 +204,33 @@ var defaultStyles = StyleSheet.create({
     },
     detailSvg: {
         marginLeft: 6,
-    }
+    },
+    extraDetails: {
+        paddingTop: 7,
+        paddingBottom: 7,
+        paddingLeft: 15,
+        paddingRight: 15,
+        flexDirection: 'row',
+    },
+    extraDetail: {
+        flex: 1,
+        fontWeight: 'bold',
+        color: '#555',
+        padding: 3,
+    },
+    description: {
+        padding: 7,
+        fontStyle: 'italic',
+    },
+    agentDetails: {
+        //flex: 1,
+        padding: 7,
+    },
+    agentDetail: {
+        //flex: 1,
+        fontWeight: 'bold',
+        color: '#444',
+    },
 });
 
 module.exports = defaultStyles;

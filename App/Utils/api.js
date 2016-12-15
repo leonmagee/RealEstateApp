@@ -20,8 +20,7 @@ var api = {
 
         // let url = 'https://slipstream.homejunction.com/ws/listings/search?market=' + market + '&listingType=residential&propertyType=Attached Single&pageSize=' + page_size + '&images=' + images + '&details=' + details + '&extended=' + extended + '&features=' + features + '&status=' + status + '&pageNumber=' + page_number;
 
-        let url = 'https://slipstream.homejunction.com/ws/listings/search?market=' + market + '&listingType=residential&pageSize=' + page_size + '&images=' + images + '&details=' + details + '&extended=' + extended + '&features=' + features + '&propertyType=' + property_type + '&status=' + status + '&city=' + city;
-
+        let url = `https://slipstream.homejunction.com/ws/listings/search?market={market}&listingType=residential&pageSize={page_size}&images={images}&details={details}&extended={extended}&features={features}&propertyType={property_type}&status={status}&city={city}`;
 
         console.log(url);
 
@@ -35,7 +34,7 @@ var api = {
         // });
 
         //return fetch(url).then((res) => res.json());
-        
+
         return fetch(url, {
             headers: {
                 'HJI-Slipstream-Token': token

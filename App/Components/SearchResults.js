@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 var ReactNative = require('react-native');
 var defaultStyles = require('./DefaultStyles');
+var SingleListing = require('./SingleListing');
 var SvgElement = require('./SvgElement');
 var svg_baths = require('../SVG/baths.js');
 var svg_beds = require('../SVG/beds.js');
@@ -17,19 +18,19 @@ var {
     // ActivityIndicator,
 } = ReactNative;
 
-var styles = StyleSheet.create({
-    // demoText: {
-    //     color: 'red',
-    //     fontSize: 30,
-    // },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: null, // allows centering of content with image - otherwise image width is imported
-        height: null,
-    },
-});
+// var styles = StyleSheet.create({
+//     // demoText: {
+//     //     color: 'red',
+//     //     fontSize: 30,
+//     // },
+//     container: {
+//         flex: 1,
+//         alignItems: 'center',
+//         justifyContent: 'center',
+//         width: null, // allows centering of content with image - otherwise image width is imported
+//         height: null,
+//     },
+// });
 
 class SearchResults extends Component {
 
@@ -43,10 +44,23 @@ class SearchResults extends Component {
         }
     }
 
+    singleListing(listing) {
+        console.log(listing);
+        this.props.navigator.push({
+            component: SingleListing,
+            title: listing.address.street,
+            passProps: {
+                //city: this.state.city,
+                listing: listing,
+            },
+            navigationBarHidden: false
+        });
+    }
 
     renderListings() {
         return this.state.listings.map((listing, index) => {
             let image_url = listing.images[0].replace('http', 'https');
+            let price_new = listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
             return (
                 <View style={defaultStyles.snippetWrap} key={index}>
                     <Image
@@ -54,10 +68,11 @@ class SearchResults extends Component {
                         source={{uri: image_url}}
                     />
                     <View style={defaultStyles.priceButtonBlock}>
-                        <Text style={defaultStyles.price}>${listing.listPrice}</Text>
+                        <Text style={defaultStyles.price}>${price_new}</Text>
                         <TouchableHighlight
-                            onPress={() => this.singleListing()}
+                            onPress={() => this.singleListing(listing)}
                             style={defaultStyles.viewDetailsButton}
+                            underlayColor="#E97C5F"
                         >
                             <Text style={defaultStyles.viewDetails}>VIEW DETAILS</Text>
                         </TouchableHighlight>
@@ -80,30 +95,6 @@ class SearchResults extends Component {
             )
         });
     }
-
-    //
-    // renderListings() {
-    //     return this.state.listings.map((listing, index) => {
-    //         let image_url = listing.images[0].replace('http', 'https');
-    //         return (
-    //             <View style={styles.snippetWrap} key={index}>
-    //                 <Image
-    //                     style={styles.listingImage}
-    //                     source={{uri: image_url}}
-    //                 />
-    //                 <Text style={styles.price}>${listing.listPrice}</Text>
-    //                 <Text style={styles.street}>Street: {listing.address.street}</Text>
-    //                 <Text style={styles.addressDetails}>
-    //                     {listing.address.city}, {listing.address.state} {listing.address.zip}
-    //                 </Text>
-    //                 <View style={styles.listingDetails}>
-    //                     <Text style={styles.detailItem}>{listing.beds} Beds</Text>
-    //                     <Text style={styles.detailItem}>{listing.baths.full} Baths</Text>
-    //                 </View>
-    //             </View>
-    //         )
-    //     });
-    // }
 
     render() {
         return (
