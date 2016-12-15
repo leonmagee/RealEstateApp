@@ -27,16 +27,28 @@ var styles = StyleSheet.create({
         width: null, // allows centering of content with image - otherwise image width is imported
         height: null,
     },
-    textWrap: {
+    titleWrap: {
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        borderWidth: 1,
+        borderColor: 'rgba(0,0,0,0.5)',
+        paddingTop: 2,
+        paddingBottom: 3,
+        paddingLeft: 7,
+        paddingRight: 7,
+        borderRadius: 5,
+        marginBottom: 25,
+    },
+    titleInner: {
         color: '#F7F7F7',
-        backgroundColor: 'transparent',
         fontSize: 28,
         textAlign: 'center',
-        marginBottom: 15,
         fontWeight: 'bold',
-        textShadowColor: '#000',
-        textShadowOffset: {width: 1, height: 1},
+        // textShadowColor: '#000',
+        // textShadowOffset: {width: 1, height: 1},
     },
+    searchInput: {
+        marginBottom: 5,
+    }
 });
 
 class Main extends Component {
@@ -46,13 +58,9 @@ class Main extends Component {
         this.state = {
             isLoading: false,
             error: false,
-            //city: 'Winfield',
-            city: 'Chicago',
+            //city: 'Chicago',
+            city: 'Winfield',
         }
-    }
-
-    singleListing() {
-        console.log('view details clicked!');
     }
 
     searchAPI() {
@@ -67,7 +75,7 @@ class Main extends Component {
                 });
                 this.props.navigator.push({
                     component: SearchResults,
-                    title: 'Search Results',
+                    title: 'Listings',
                     passProps: {
                         city: this.state.city,
                         results: res.result.listings
@@ -79,15 +87,17 @@ class Main extends Component {
     }
 
     render() {
-
         return (
             <Image source={require('../Assets/img/homepage-dark-bg.png')} style={styles.container}>
                 <View style={styles.container}>
-                    <Text style={styles.textWrap}>SEARCH SAN DIEGO</Text>
+                    <View style={styles.titleWrap}>
+                        <Text style={styles.titleInner}>SEARCH SAN DIEGO</Text>
+                    </View>
                     <TextInput
-                        style={defaultStyles.input}
+                        style={[styles.searchInput, defaultStyles.input]}
                         autoCapitalize="none"
                         placeholder="Enter City"
+                        placeholderTextColor="#777"
                         onChangeText={(city) => this.setState({city})}
                         autoCorrect={false}
                     />
@@ -95,7 +105,7 @@ class Main extends Component {
                         style={[defaultStyles.button, defaultStyles.buttonColorBlue]}
                         onPress={() => this.searchAPI()}
                         underlayColor="#4EB3A2">
-                        <Text style={defaultStyles.buttonText}>Search</Text>
+                        <Text style={defaultStyles.buttonText}>SEE LISTINGS</Text>
                     </TouchableHighlight>
                     <ActivityIndicator
                         animating={this.state.isLoading}
@@ -106,5 +116,4 @@ class Main extends Component {
         )
     }
 }
-
 module.exports = Main;

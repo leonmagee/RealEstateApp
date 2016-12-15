@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 var defaultStyles = require('./DefaultStyles');
-
 import Svg, {
     Circle,
     Ellipse,

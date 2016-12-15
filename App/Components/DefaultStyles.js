@@ -11,13 +11,8 @@ import {
  * @todo choose new color scheme?
  */
 var width = Dimensions.get('window').width;
-
-//var color1 = '#E97C5F'; // light red
 var color1 = '#E95637'; // light red
-//var color2 = '#08C5B1'; // blue
 var color2 = '#04C0C5'; // blue
-//var color1 = '#e97c5f';
-
 var defaultStyles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
@@ -97,7 +92,7 @@ var defaultStyles = StyleSheet.create({
         backgroundColor: '#F5F5F5',
         alignItems: 'center',
     },
-    snippetWrap: { // start snippets - move this to a new file?
+    snippetWrap: {
         backgroundColor: '#FFF',
         marginTop: 15,
         marginBottom: 15,
@@ -152,12 +147,7 @@ var defaultStyles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
     },
-    // addressMlsWrap: {
-    //     //backgroundColor: 'red',
-    //     flexDirection: 'row',
-    // },
     addressBlock: {
-        //backgroundColor: 'blue',
         backgroundColor: '#FAFAFA',
         borderColor: '#F4F4F4',
         borderWidth: 1,
@@ -167,9 +157,6 @@ var defaultStyles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 5,
     },
-    // mlsBlock: {
-    //     flex: 1,
-    // },
     mlsNumber: {
         paddingTop: 10,
         textAlign: 'center',
@@ -223,14 +210,11 @@ var defaultStyles = StyleSheet.create({
         fontStyle: 'italic',
     },
     agentDetails: {
-        //flex: 1,
         padding: 7,
     },
     agentDetail: {
-        //flex: 1,
         fontWeight: 'bold',
         color: '#444',
     },
 });
-
 module.exports = defaultStyles;

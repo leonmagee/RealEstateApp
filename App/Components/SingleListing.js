@@ -10,11 +10,7 @@ var {
     Text,
     View,
     ScrollView,
-    StyleSheet,
     Image,
-    // TextInput,
-    TouchableHighlight,
-    // ActivityIndicator,
 } = ReactNative;
 
 class SingleListing extends Component {
