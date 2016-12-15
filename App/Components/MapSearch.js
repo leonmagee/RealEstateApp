@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     },
 });
 
-class MapTest extends Component {
+class MapSearch extends Component {
 
     constructor(props) {
         super(props);
@@ -112,12 +112,7 @@ class MapTest extends Component {
             lat: lat_final,
             lng: lng_final,
         }
-
-        //console.log(lat_final);
-        //console.log(lng_final);
-
     }
-
 
     render() {
         return (
@@ -143,4 +138,4 @@ class MapTest extends Component {
     }
 }
 
-module.exports = MapTest;
+module.exports = MapSearch;

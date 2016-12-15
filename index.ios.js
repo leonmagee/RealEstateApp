@@ -26,14 +26,14 @@ class RealEstateApp extends Component {
     return (
         <NavigatorIOS
             style={styles.container}
-            // initialRoute={{
-            //         component: Main,
-            //         title: 'Home',
-            //     }}
             initialRoute={{
-                    component: MapTest,
-                    title: 'Map',
+                    component: Main,
+                    title: 'Home',
                 }}
+            // initialRoute={{
+            //         component: MapTest,
+            //         title: 'Map',
+            //     }}
             navigationBarHidden={true}
         />
     )
