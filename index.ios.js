@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Main from './App/Components/Main'
+import MapTest from './App/Components/MapTest';
 //import AnimationTest from './App/Components/AnimationTest'
 
 import {
@@ -25,9 +26,13 @@ class RealEstateApp extends Component {
     return (
         <NavigatorIOS
             style={styles.container}
+            // initialRoute={{
+            //         component: Main,
+            //         title: 'Home',
+            //     }}
             initialRoute={{
-                    component: Main,
-                    title: 'Home',
+                    component: MapTest,
+                    title: 'Map',
                 }}
             navigationBarHidden={true}
         />

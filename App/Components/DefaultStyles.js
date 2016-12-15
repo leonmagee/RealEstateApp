@@ -216,5 +216,10 @@ var defaultStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#444',
     },
+    mapContainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
 });
 module.exports = defaultStyles;
