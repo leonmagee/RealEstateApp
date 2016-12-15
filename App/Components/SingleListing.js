@@ -25,7 +25,7 @@ class SingleListing extends Component {
     }
 
     renderListings() {
-        let image_url = this.state.listing.images[0].replace('http', 'https');
+        let image_url = this.state.listing.images[0].replace('http:', 'https:');
         let price_new = this.state.listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
         let listing = this.state.listing;
         return (

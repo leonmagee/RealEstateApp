@@ -41,7 +41,7 @@ class SearchResults extends Component {
 
     renderListings() {
         return this.state.listings.map((listing, index) => {
-            let image_url = listing.images[0].replace('http', 'https');
+            let image_url = listing.images[0].replace('http:', 'https:');
             let price_new = listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
             return (
                 <View style={defaultStyles.snippetWrap} key={index}>

@@ -47,7 +47,7 @@ var styles = StyleSheet.create({
         // textShadowOffset: {width: 1, height: 1},
     },
     searchInput: {
-        marginBottom: 5,
+        marginBottom: 12,
     }
 });
 
@@ -59,7 +59,8 @@ class Main extends Component {
             isLoading: false,
             error: false,
             //city: 'Chicago',
-            city: 'Winfield',
+            city: 'San Diego',
+            zip: '',
         }
     }
 
@@ -68,7 +69,7 @@ class Main extends Component {
             isLoading: true
         });
         api.getToken().then((res) => {
-            api.getListings(res.result.token, this.state.city).then((res) => {
+            api.getListings(res.result.token, this.state.city, this.state.zip).then((res) => {
                 console.log(res.result.listings);
                 this.setState({
                     isLoading: false
@@ -99,6 +100,14 @@ class Main extends Component {
                         placeholder="Enter City"
                         placeholderTextColor="#777"
                         onChangeText={(city) => this.setState({city})}
+                        autoCorrect={false}
+                    />
+                    <TextInput
+                        style={[styles.searchInput, defaultStyles.input]}
+                        autoCapitalize="none"
+                        placeholder="Enter Zip"
+                        placeholderTextColor="#777"
+                        onChangeText={(zip) => this.setState({zip})}
                         autoCorrect={false}
                     />
                     <TouchableHighlight
