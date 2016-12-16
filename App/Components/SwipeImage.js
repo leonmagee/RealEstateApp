@@ -67,7 +67,7 @@ class SwipeImage extends Component {
             <Swiper
                 nextButton={<Text style={styles.buttonText}>›</Text>}
                 prevButton={<Text style={styles.buttonText}>‹</Text>}
-                height={250}
+                height={300}
                 dotColor={'rgba(255,255,255,0.6)'}
                 activeDotColor={'#FFF'}
                 showsButtons={true}>

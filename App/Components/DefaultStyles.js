@@ -117,7 +117,7 @@ var defaultStyles = StyleSheet.create({
     listingWrap: {},
     listingImage: {
         flex: 1,
-        height: 240,
+        height: 300,
     },
     listingButtonsWrap: {
         flex: 1,
