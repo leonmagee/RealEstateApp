@@ -32,7 +32,7 @@ class SingleListing extends Component {
 
     nextImage() {
         let new_current_image = ( this.state.current_image + 1 );
-        if ( new_current_image > this.state.image_count ) {
+        if (new_current_image > this.state.image_count) {
             new_current_image = 1;
         }
         this.setState({
@@ -47,21 +47,30 @@ class SingleListing extends Component {
         let listing = this.state.listing;
         //let number_images = this.state.listing.images.length;
 
+        // if (this.state.image_count > 1) {
+        //     var next_button = <TouchableHighlight onPress={() => this.nextImage()}
+        //                                           style={defaultStyles.listingImageButtonRight}>
+        //         <Text style={defaultStyles.listingImageButtonRightText}>NEXT IMAGE ></Text>
+        //     </TouchableHighlight>;
+        // } else {
+        //     var next_button = <Text></Text>;
+        // }
+
         if (this.state.image_count > 1) {
-            var next_button = <TouchableHighlight onPress={() => this.nextImage()}
-                                                  style={defaultStyles.listingImageButtonRight}>
-                <Text style={defaultStyles.listingImageButtonRightText}>NEXT IMAGE ></Text>
-            </TouchableHighlight>;
+            var listing_images = <SwipeImage images={this.state.images}/>;
         } else {
-            var next_button = <Text></Text>;
+            var listing_images = <Image
+                style={defaultStyles.listingImage}
+                source={{uri: this.state.image_url}}>
+                <View style={defaultStyles.listingButtonsWrap}>
+                    <Text style={defaultStyles.listingImageButtonLeft}>IMAGE 1/1</Text>
+                </View>
+            </Image>;
         }
 
         return (
             <View style={defaultStyles.listingWrap}>
-
-                <SwipeImage images={this.state.images}/>
-
-
+                {listing_images}
                 <View style={defaultStyles.priceButtonBlock}>
                     <Text style={defaultStyles.price}>${price_new}</Text>
                     <Text style={defaultStyles.mls}>MLS #: {listing.id}</Text>
