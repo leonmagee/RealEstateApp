@@ -44,8 +44,6 @@ class MapSearch extends Component {
 
             lat_total = Number(lat_total) + Number(result.coordinates.latitude);
             lng_total = Number(lng_total) + Number(result.coordinates.longitude);
-            // console.log(lat_total);
-            // console.log(lng_total);
 
             let price_new = result.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
             markers.push({
@@ -55,23 +53,13 @@ class MapSearch extends Component {
                 },
                 title: price_new, // use price?
                 description: result.address.street, // use address
+                listing: result
             });
             listing_count++;
         });
 
         lat_final = ( lat_total / listing_count );
         lng_final = ( lng_total / listing_count );
-
-        // console.log(lat_final);
-        // console.log(lng_final);
-        // console.log(listing_count);
-
-        // return {
-        //     lat: lat_final,
-        //     lng: lng_final,
-        // }
-
-        //console.log(markers);
 
         this.state = {
             isLoading: false,
@@ -104,7 +92,7 @@ class MapSearch extends Component {
                             title={marker.title}
                             description={marker.description}
                         >
-                            <PriceMarker amount={marker.title}/>
+                            <PriceMarker amount={marker.title} listing={marker.listing} nav={this.props.navigator}/>
                         </MapView.Marker>
                     ))}
                 </MapView>

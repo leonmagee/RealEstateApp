@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import SwipeImage from './SwipeImage';
 var ReactNative = require('react-native');
 var defaultStyles = require('./DefaultStyles');
 var SvgElement = require('./SvgElement');
@@ -24,7 +23,6 @@ class SingleListing extends Component {
             error: false,
             listing: props.listing,
             image_url: props.listing.images[0].replace('http:', 'https:'),
-            images: props.listing.images,
             current_image: 1,
             image_count: props.listing.images.length,
         }
@@ -58,10 +56,14 @@ class SingleListing extends Component {
 
         return (
             <View style={defaultStyles.listingWrap}>
-
-                <SwipeImage images={this.state.images}/>
-
-
+                <Image
+                    style={defaultStyles.listingImage}
+                    source={{uri: this.state.image_url}}>
+                    <View style={defaultStyles.listingButtonsWrap}>
+                        <Text style={defaultStyles.listingImageButtonLeft}>IMAGE {this.state.current_image}/{this.state.image_count}</Text>
+                        {next_button}
+                    </View>
+                </Image>
                 <View style={defaultStyles.priceButtonBlock}>
                     <Text style={defaultStyles.price}>${price_new}</Text>
                     <Text style={defaultStyles.mls}>MLS #: {listing.id}</Text>

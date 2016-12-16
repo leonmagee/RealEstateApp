@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import SwipeImage from './App/Components/SwipeImage';
 import Main from './App/Components/Main'
 import MapTest from './App/Components/MapTest';
 //import AnimationTest from './App/Components/AnimationTest'
@@ -30,6 +31,10 @@ class RealEstateApp extends Component {
                     component: Main,
                     title: 'Home',
                 }}
+            // initialRoute={{
+            //         component: SwipeImage,
+            //         title: 'Image Test',
+            //     }}
             // initialRoute={{
             //         component: MapTest,
             //         title: 'Map',

@@ -12,7 +12,9 @@ import {
  */
 var width = Dimensions.get('window').width;
 var color1 = '#E95637'; // light red
+// darker red - #E76348
 var color2 = '#04C0C5'; // blue
+// darker blue - #4EB3A2
 var defaultStyles = StyleSheet.create({
     homeWrap: {
         backgroundColor: 'rgba(0,0,0,0.3)',
@@ -116,6 +118,33 @@ var defaultStyles = StyleSheet.create({
     listingImage: {
         flex: 1,
         height: 240,
+    },
+    listingButtonsWrap: {
+        flex: 1,
+    },
+    listingImageButtonLeft: {
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        color: '#FFF',
+        fontWeight: 'bold',
+        fontSize: 11,
+        padding: 4,
+        borderRadius: 5,
+        position: 'absolute',
+        bottom: 5,
+        left: 5,
+    },
+    listingImageButtonRight: {
+        position: 'absolute',
+        bottom: 5,
+        right: 5,
+    },
+    listingImageButtonRightText: {
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        color: '#FFF',
+        fontWeight: 'bold',
+        fontSize: 11,
+        padding: 4,
+        borderRadius: 5,
     },
     priceButtonBlock: {
         flexDirection: 'row',

@@ -1,12 +1,15 @@
-import React, { PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
+var SingleListing = require('./SingleListing');
 import {
     StyleSheet,
     View,
     Text,
+    TouchableHighlight,
 } from 'react-native';
 
 const propTypes = {
-    amount: PropTypes.number.isRequired,
+    //amount: PropTypes.number.isRequired,
+    //amount: PropTypes.isRequired,
     fontSize: PropTypes.number,
 };
 
@@ -14,18 +17,35 @@ const defaultProps = {
     fontSize: 13,
 };
 
-class PriceMarker extends React.Component {
+class PriceMarker extends Component {
+
+    bubbleClick(listing) {
+
+        console.log(listing);
+        var nav = this.props.nav;
+        nav.push({
+            component: SingleListing,
+            title: listing.address.street,
+            passProps: {
+                listing: listing,
+            },
+            navigationBarHidden: false
+        });
+    }
+
     render() {
-        const { fontSize, amount } = this.props;
+        const {fontSize, amount, listing} = this.props;
         return (
-            <View style={styles.container}>
-                <View style={styles.bubble}>
-                    <Text style={styles.dollar}>$</Text>
-                    <Text style={[styles.amount, { fontSize }]}>{amount}</Text>
+            <TouchableHighlight onPress={() => this.bubbleClick(listing)}>
+                <View style={styles.container}>
+                    <View style={styles.bubble}>
+                        <Text style={styles.dollar}>$</Text>
+                        <Text style={[styles.amount, { fontSize }]}>{amount}</Text>
+                    </View>
+                    <View style={styles.arrowBorder}/>
+                    <View style={styles.arrow}/>
                 </View>
-                <View style={styles.arrowBorder} />
-                <View style={styles.arrow} />
-            </View>
+            </TouchableHighlight>
         );
     }
 }
@@ -42,10 +62,12 @@ const styles = StyleSheet.create({
         flex: 0,
         flexDirection: 'row',
         alignSelf: 'flex-start',
-        backgroundColor: '#FF5A5F',
+        //backgroundColor: '#FF5A5F',
+        backgroundColor: '#04C0C5',
         padding: 2,
         borderRadius: 3,
-        borderColor: '#D23F44',
+        //borderColor: '#D23F44',
+        borderColor: '#4EB3A2',
         borderWidth: 0.5,
     },
     dollar: {
@@ -60,7 +82,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         borderWidth: 4,
         borderColor: 'transparent',
-        borderTopColor: '#FF5A5F',
+        //borderTopColor: '#FF5A5F',
+        borderTopColor: '#04C0C5',
         alignSelf: 'center',
         marginTop: -9,
     },
@@ -68,7 +91,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         borderWidth: 4,
         borderColor: 'transparent',
-        borderTopColor: '#D23F44',
+        //borderTopColor: '#D23F44',
+        borderTopColor: '#4EB3A2',
         alignSelf: 'center',
         marginTop: -0.5,
     },

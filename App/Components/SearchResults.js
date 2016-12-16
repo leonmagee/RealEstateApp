@@ -28,7 +28,7 @@ class SearchResults extends Component {
     }
 
     singleListing(listing) {
-        console.log(listing);
+        //console.log(listing);
         this.props.navigator.push({
             component: SingleListing,
             title: listing.address.street,
