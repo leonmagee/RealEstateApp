@@ -14,6 +14,14 @@ var width = Dimensions.get('window').width;
 var color1 = '#E95637'; // light red
 var color2 = '#04C0C5'; // blue
 var defaultStyles = StyleSheet.create({
+    homeWrap: {
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        width: width,
+        flex: 1,
+        paddingLeft: 55,
+        paddingRight: 55,
+        paddingTop: 20,
+    },
     buttonText: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -24,6 +32,7 @@ var defaultStyles = StyleSheet.create({
         height: 45,
         borderWidth: 1,
         borderRadius: 8,
+        marginBottom: 12,
         //marginBottom: 10,
         //marginTop: 10,
         justifyContent: 'center',

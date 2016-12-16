@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SearchResults from './SearchResults';
+import MapSearch from './MapSearch';
 var ReactNative = require('react-native');
 var defaultStyles = require('./DefaultStyles');
 var api = require('../Utils/api');
@@ -27,24 +28,28 @@ var styles = StyleSheet.create({
         width: null, // allows centering of content with image - otherwise image width is imported
         height: null,
     },
-    titleWrap: {
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        borderWidth: 1,
-        borderColor: 'rgba(0,0,0,0.5)',
-        paddingTop: 2,
-        paddingBottom: 3,
-        paddingLeft: 7,
-        paddingRight: 7,
-        borderRadius: 5,
-        marginBottom: 25,
-    },
-    titleInner: {
-        color: '#F7F7F7',
-        fontSize: 28,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        // textShadowColor: '#000',
-        // textShadowOffset: {width: 1, height: 1},
+    // titleWrap: {
+    //     backgroundColor: 'rgba(0,0,0,0.5)',
+    //     borderWidth: 1,
+    //     borderColor: 'rgba(0,0,0,0.5)',
+    //     paddingTop: 2,
+    //     paddingBottom: 3,
+    //     paddingLeft: 7,
+    //     paddingRight: 7,
+    //     borderRadius: 5,
+    //     marginBottom: 25,
+    // },
+    // titleInner: {
+    //     color: '#F7F7F7',
+    //     fontSize: 28,
+    //     textAlign: 'center',
+    //     fontWeight: 'bold',
+    //     // textShadowColor: '#000',
+    //     // textShadowOffset: {width: 1, height: 1},
+    // },
+    homeLogo: {
+        resizeMode: 'contain',
+        width: null,
     },
     searchInput: {
         marginBottom: 12,
@@ -87,12 +92,37 @@ class Main extends Component {
         });
     }
 
+
+    searchMap() {
+        this.setState({
+            isLoading: true
+        });
+        api.getToken().then((res) => {
+            api.getListings(res.result.token, this.state.city, this.state.zip).then((res) => {
+                console.log(res.result.listings);
+                this.setState({
+                    isLoading: false
+                });
+
+                this.props.navigator.push({
+                    component: MapSearch,
+                    title: 'Map',
+                    passProps: {
+                        city: this.state.city,
+                        results: res.result.listings
+                    },
+                    navigationBarHidden: false
+                });
+            });
+        });
+    }
+
     render() {
         return (
             <Image source={require('../Assets/img/homepage-dark-bg.png')} style={styles.container}>
-                <View style={styles.container}>
+                <View style={defaultStyles.homeWrap}>
                     <View style={styles.titleWrap}>
-                        <Text style={styles.titleInner}>SEARCH SAN DIEGO</Text>
+                        <Image source={require('../Assets/img/sd-search-logo.png')} style={styles.homeLogo}></Image>
                     </View>
                     <TextInput
                         style={[styles.searchInput, defaultStyles.input]}
@@ -115,6 +145,12 @@ class Main extends Component {
                         onPress={() => this.searchAPI()}
                         underlayColor="#4EB3A2">
                         <Text style={defaultStyles.buttonText}>SEE LISTINGS</Text>
+                    </TouchableHighlight>
+                    <TouchableHighlight
+                        style={[defaultStyles.button, defaultStyles.buttonColorRed]}
+                        onPress={() => this.searchMap()}
+                        underlayColor="#E76348">
+                        <Text style={defaultStyles.buttonText}>MAP SEARCH</Text>
                     </TouchableHighlight>
                     <ActivityIndicator
                         animating={this.state.isLoading}

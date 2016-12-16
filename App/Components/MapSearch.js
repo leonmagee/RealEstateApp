@@ -34,83 +34,58 @@ class MapSearch extends Component {
 
     constructor(props) {
         super(props);
+
+        let markers = [];
+        let lat_total = '';
+        let lng_total = '';
+        let listing_count = 0;
+
+        props.results.map((result, index) => {
+
+            lat_total = Number(lat_total) + Number(result.coordinates.latitude);
+            lng_total = Number(lng_total) + Number(result.coordinates.longitude);
+            // console.log(lat_total);
+            // console.log(lng_total);
+
+            let price_new = result.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+            markers.push({
+                latlng: {
+                    latitude: result.coordinates.latitude,
+                    longitude: result.coordinates.longitude,
+                },
+                title: price_new, // use price?
+                description: result.address.street, // use address
+            });
+            listing_count++;
+        });
+
+        lat_final = ( lat_total / listing_count );
+        lng_final = ( lng_total / listing_count );
+
+        // console.log(lat_final);
+        // console.log(lng_final);
+        // console.log(listing_count);
+
+        // return {
+        //     lat: lat_final,
+        //     lng: lng_final,
+        // }
+
+        //console.log(markers);
+
         this.state = {
+            isLoading: false,
+            error: false,
+            city: props.city,
+            listings: props.results,
+
             region: {
-                latitude: 32.723801,
-                longitude: -117.253836,
+                latitude: lat_final,
+                longitude: lng_final,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
             },
-            markers: [
-                {
-                    latlng: {
-                        latitude: 32.723801,
-                        longitude: -117.253836
-                    },
-                    title: 'Property 1', // use price?
-                    description: 'Property Description...', // use address
-                },
-                {
-                    latlng: {
-                        latitude: 32.73991,
-                        longitude: -117.254633
-                    },
-                    title: 'Property 2', // use price?
-                    description: 'Property Description 2...', // use address
-                },
-                {
-                    latlng: {
-                        latitude: 32.726804,
-                        longitude: -117.244685
-                    },
-                    title: 'Property 3', // use price?
-                    description: 'Property Description 3...', // use address
-                }
-            ]
-        }
-    }
-
-    // latitude:32.723801
-    // longitude:-117.253836
-    // latitude:32.73991
-    // longitude:-117.254633
-    // latitude:32.726804
-    // longitude:-117.244685
-
-    getCoordinates(coords) {
-        // var coords = [
-        //     {
-        //         latitude: 32.723801,
-        //         longitude: -117.253836
-        //     },
-        //     {
-        //         latitude: 32.73991,
-        //         longitude: -117.254633
-        //     },
-        //     {
-        //         latitude: 32.726804,
-        //         longitude: -117.244685
-        //     }
-        // ];
-
-        var lat_total = '';
-        var lng_total = '';
-
-        var coords_count = coords.length;
-        console.log(coords_count);
-
-        for (var coordinate in coords) {
-            console.log(coords[coordinate]);
-            lat_total = Number(lat_total) + Number(coords[coordinate].latitude);
-            lng_total = Number(lng_total) + Number(coords[coordinate].longitude);
-        }
-
-        lat_final = ( lat_total / coords_count );
-        lng_final = ( lng_total / coords_count );
-
-        return {
-            lat: lat_final,
-            lng: lng_final,
+            markers: markers,
         }
     }
 
@@ -129,7 +104,7 @@ class MapSearch extends Component {
                             title={marker.title}
                             description={marker.description}
                         >
-                            <PriceMarker amount={777}/>
+                            <PriceMarker amount={marker.title}/>
                         </MapView.Marker>
                     ))}
                 </MapView>

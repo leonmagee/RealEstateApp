@@ -6,8 +6,6 @@ var api = {
 
         let token_url = `https://slipstream.homejunction.com/ws/api/authenticate?license=${license_key}&version=${slipstream_version}`;
 
-        console.log(token_url);
-
         return fetch(token_url).then((res) => res.json());
     },
     getListings(token, city_input = '', zip_input = '') {
