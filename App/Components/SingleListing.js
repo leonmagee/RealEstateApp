@@ -42,19 +42,8 @@ class SingleListing extends Component {
     }
 
     renderListings() {
-        //let image_url = this.state.listing.images[0].replace('http:', 'https:');
         let price_new = this.state.listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
         let listing = this.state.listing;
-        //let number_images = this.state.listing.images.length;
-
-        // if (this.state.image_count > 1) {
-        //     var next_button = <TouchableHighlight onPress={() => this.nextImage()}
-        //                                           style={defaultStyles.listingImageButtonRight}>
-        //         <Text style={defaultStyles.listingImageButtonRightText}>NEXT IMAGE ></Text>
-        //     </TouchableHighlight>;
-        // } else {
-        //     var next_button = <Text></Text>;
-        // }
 
         if (this.state.image_count > 1) {
             var listing_images = <SwipeImage images={this.state.images}/>;

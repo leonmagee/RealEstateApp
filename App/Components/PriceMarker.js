@@ -36,7 +36,7 @@ class PriceMarker extends Component {
     render() {
         const {fontSize, amount, listing} = this.props;
         return (
-            <TouchableHighlight onPress={() => this.bubbleClick(listing)}>
+            <TouchableHighlight onPress={() => this.bubbleClick(listing)} underlayColor="transparent">
                 <View style={styles.container}>
                     <View style={styles.bubble}>
                         <Text style={styles.dollar}>$</Text>
