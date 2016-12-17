@@ -117,35 +117,38 @@ var defaultStyles = StyleSheet.create({
     listingWrap: {},
     listingImage: {
         flex: 1,
-        height: 300,
+        height: 230,
     },
-    listingButtonsWrap: {
-        flex: 1,
-    },
-    listingImageButtonLeft: {
-        backgroundColor: 'rgba(0,0,0,0.4)',
-        color: '#FFF',
-        fontWeight: 'bold',
-        fontSize: 11,
-        padding: 4,
-        borderRadius: 5,
-        position: 'absolute',
-        bottom: 5,
-        left: 5,
-    },
-    listingImageButtonRight: {
-        position: 'absolute',
-        bottom: 5,
-        right: 5,
-    },
-    listingImageButtonRightText: {
-        backgroundColor: 'rgba(0,0,0,0.4)',
-        color: '#FFF',
-        fontWeight: 'bold',
-        fontSize: 11,
-        padding: 4,
-        borderRadius: 5,
-    },
+
+
+    //
+    // listingButtonsWrap: {
+    //     flex: 1,
+    // },
+    // listingImageButtonLeft: {
+    //     backgroundColor: 'rgba(0,0,0,0.4)',
+    //     color: '#FFF',
+    //     fontWeight: 'bold',
+    //     fontSize: 11,
+    //     padding: 4,
+    //     borderRadius: 5,
+    //     position: 'absolute',
+    //     bottom: 5,
+    //     left: 5,
+    // },
+    // listingImageButtonRight: {
+    //     position: 'absolute',
+    //     bottom: 5,
+    //     right: 5,
+    // },
+    // listingImageButtonRightText: {
+    //     backgroundColor: 'rgba(0,0,0,0.4)',
+    //     color: '#FFF',
+    //     fontWeight: 'bold',
+    //     fontSize: 11,
+    //     padding: 4,
+    //     borderRadius: 5,
+    // },
     priceButtonBlock: {
         flexDirection: 'row',
     },
@@ -158,15 +161,15 @@ var defaultStyles = StyleSheet.create({
         paddingBottom: 3,
         flex: 1,
     },
-    mls: {
-        fontSize: 20,
-        color: '#444',
-        paddingTop: 8,
-        paddingBottom: 7,
-        marginLeft: 20,
-        flex: 1,
-        fontWeight: 'bold',
-    },
+    // mls: {
+    //     fontSize: 20,
+    //     color: '#444',
+    //     paddingTop: 8,
+    //     paddingBottom: 7,
+    //     marginLeft: 20,
+    //     flex: 1,
+    //     fontWeight: 'bold',
+    // },
     viewDetailsButton: {
         backgroundColor: color1,
         marginTop: 8,
@@ -207,28 +210,8 @@ var defaultStyles = StyleSheet.create({
         padding: 3,
         fontSize: 12,
     },
-    addressBlockSingle: {
-        paddingTop: 6,
-        paddingBottom: 10,
-        paddingLeft: 18,
-        paddingRight: 5,
-        borderTopColor: '#F4F4F4',
-        borderTopWidth: 1,
-        borderBottomColor: '#F4F4F4',
-        borderBottomWidth: 1,
-    },
-    streetSingle: {
-        color: '#555',
-        fontWeight: 'bold',
-        padding: 3,
-        fontSize: 25,
-    },
-    addressDetailsSingle: {
-        color: '#777',
-        fontWeight: 'bold',
-        padding: 3,
-        fontSize: 20,
-    },
+
+
     listingDetails: {
         flexDirection: 'row',
         paddingTop: 5,
@@ -248,68 +231,70 @@ var defaultStyles = StyleSheet.create({
     detailSvg: {
         marginLeft: 6,
     },
-    extraDetails: {
-        padding: 7,
-        //flexDirection: 'row',
-        //flexWrap: 'wrap',
-        alignItems: 'center',
-        borderTopColor: '#F4F4F4',
-        borderTopWidth: 1,
-        //justifyContent: 'space-around',
-    },
-    extraDetail: {
-        //height: 45,
-        width: width * .45,
-        //flex: 1,
-        marginTop: 4,
-        marginBottom: 4,
-        fontWeight: 'bold',
-        color: '#555',
-    },
-    detailInner: {
-        color: color2,   
-    },
-    descriptionWrap: {
-        borderTopColor: '#F4F4F4',
-        borderTopWidth: 1,
-        borderBottomColor: '#F4F4F4',
-        borderBottomWidth: 1,
-    },
-    description: {
-        padding: 12,
-        fontStyle: 'italic',
-    },
-    agentDetails: {
-        //padding: 7,
-        //backgroundColor: 'red',
-        alignItems: 'center',
-        paddingBottom: 15,
-    },
-    agentDetailsInner: {
-        //backgroundColor: 'blue',
-        width: width * .55,
-    },
-    agentTitleWrap: {
-        borderBottomColor: '#F4F4F4',
-        borderBottomWidth: 1,
-        padding: 4,
-        marginBottom: 5,
-    },
-    agentTitle: {
-        fontSize: 17,
-        color: '#333',
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    agentName: {
-        fontWeight: 'bold',
-        color: color2,
-        fontSize: 15,
-    },
-    agentDetail: {
-        fontWeight: 'bold',
-        color: '#555',
-    },
+
+    //
+    // extraDetails: {
+    //     padding: 7,
+    //     //flexDirection: 'row',
+    //     //flexWrap: 'wrap',
+    //     alignItems: 'center',
+    //     borderTopColor: '#F4F4F4',
+    //     borderTopWidth: 1,
+    //     //justifyContent: 'space-around',
+    // },
+    // extraDetail: {
+    //     //height: 45,
+    //     width: width * .45,
+    //     //flex: 1,
+    //     marginTop: 4,
+    //     marginBottom: 4,
+    //     fontWeight: 'bold',
+    //     color: '#555',
+    // },
+    // detailInner: {
+    //     color: color2,
+    // },
+    // descriptionWrap: {
+    //     borderTopColor: '#F4F4F4',
+    //     borderTopWidth: 1,
+    //     borderBottomColor: '#F4F4F4',
+    //     borderBottomWidth: 1,
+    // },
+    // description: {
+    //     padding: 12,
+    //     fontStyle: 'italic',
+    // },
+    // agentDetails: {
+    //     //padding: 7,
+    //     //backgroundColor: 'red',
+    //     alignItems: 'center',
+    //     paddingBottom: 15,
+    // },
+    // agentDetailsInner: {
+    //     //backgroundColor: 'blue',
+    //     width: width * .55,
+    // },
+    // agentTitleWrap: {
+    //     borderBottomColor: '#F4F4F4',
+    //     borderBottomWidth: 1,
+    //     padding: 4,
+    //     marginBottom: 5,
+    // },
+    // agentTitle: {
+    //     fontSize: 17,
+    //     color: '#333',
+    //     fontWeight: 'bold',
+    //     textAlign: 'center',
+    // },
+    // agentName: {
+    //     fontWeight: 'bold',
+    //     color: color2,
+    //     fontSize: 15,
+    // },
+    // agentDetail: {
+    //     fontWeight: 'bold',
+    //     color: '#555',
+    // },
     mapContainer: {
         flex: 1,
         alignItems: 'center',

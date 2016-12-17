@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import SwipeImage from './SwipeImage';
 var ReactNative = require('react-native');
-var defaultStyles = require('./DefaultStyles');
+var DateFromTimestamp = require('./DateFromTimestamp');
+var singleStyles = require('./SingleListingStyles');
 var SvgElement = require('./SvgElement');
 var svg_baths = require('../SVG/baths.js');
 var svg_beds = require('../SVG/beds.js');
@@ -49,59 +50,105 @@ class SingleListing extends Component {
             var listing_images = <SwipeImage images={this.state.images}/>;
         } else {
             var listing_images = <Image
-                style={defaultStyles.listingImage}
+                style={singleStyles.listingImage}
                 source={{uri: this.state.image_url}}>
-                <View style={defaultStyles.listingButtonsWrap}>
-                    <Text style={defaultStyles.listingImageButtonLeft}>IMAGE 1/1</Text>
+                <View style={singleStyles.listingButtonsWrap}>
+                    <Text style={singleStyles.listingImageButtonLeft}>IMAGE 1/1</Text>
                 </View>
             </Image>;
         }
 
+        console.log(listing.listingDate);
+
+        String.prototype.capitalize = function () {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+
+        const listing_type = listing.listingType.capitalize();
+
         return (
-            <View style={defaultStyles.listingWrap}>
+            <View style={singleStyles.listingWrap}>
                 {listing_images}
-                <View style={defaultStyles.priceButtonBlock}>
-                    <Text style={defaultStyles.price}>${price_new}</Text>
-                    <Text style={defaultStyles.mls}>#{listing.id}</Text>
+                <View style={singleStyles.priceButtonBlock}>
+                    <Text style={singleStyles.price}>${price_new}</Text>
+                    <Text style={singleStyles.mls}>#{listing.id}</Text>
                 </View>
-                <View style={defaultStyles.addressBlockSingle}>
-                    <Text style={defaultStyles.streetSingle}>{listing.address.street}</Text>
-                    <Text style={defaultStyles.addressDetailsSingle}>
+                <View style={singleStyles.separator}/>
+                <View style={singleStyles.addressBlock}>
+                    <Text style={singleStyles.street}>{listing.address.street}</Text>
+                    <Text style={singleStyles.addressDetails}>
                         {listing.address.city}, {listing.address.state} {listing.address.zip}
                     </Text>
                 </View>
-                <View style={defaultStyles.listingDetails}>
-                    <SvgElement svg_data={svg_beds}/>
-                    <Text style={defaultStyles.detailItem}>{listing.beds} BEDS</Text>
-                    <SvgElement svg_data={svg_baths}/>
-                    <Text style={defaultStyles.detailItem}>{listing.baths.full} BATHS</Text>
-                    <SvgElement svg_data={svg_sqft}/>
-                    <Text style={defaultStyles.detailItem}>{listing.size} SQFT</Text>
+                <View style={singleStyles.separator}/>
+                <View style={singleStyles.listingDetails}>
+                    <SvgElement svg_data={svg_beds} svg_scale={0.046} svg_size={31}/>
+                    <Text style={singleStyles.detailItem}>{listing.beds} BEDS</Text>
+                    <SvgElement svg_data={svg_baths} svg_scale={0.045} svg_size={31}/>
+                    <Text style={singleStyles.detailItem}>{listing.baths.full} BATHS</Text>
+                    <SvgElement svg_data={svg_sqft} svg_scale={0.045} svg_size={31}/>
+                    <Text style={singleStyles.detailItem}>{listing.size} SQFT</Text>
                 </View>
-                <View style={defaultStyles.extraDetails}>
-                    <Text style={defaultStyles.extraDetail}>Year Built: <Text style={defaultStyles.detailInner}>{listing.yearBuilt}</Text></Text>
-                    <Text style={defaultStyles.extraDetail}>County: <Text style={defaultStyles.detailInner}>{listing.county}</Text></Text>
-                    <Text style={defaultStyles.extraDetail}>Days on Market: <Text style={defaultStyles.detailInner}>{listing.daysOnMarket}</Text></Text>
-                    <Text style={defaultStyles.extraDetail}>Listing Date: <Text style={defaultStyles.detailInner}>{listing.listingDate}</Text></Text>
-                    <Text style={defaultStyles.extraDetail}>Type: <Text style={defaultStyles.detailInner}>{listing.listingType}</Text></Text>
-                </View>
-                <View style={defaultStyles.descriptionWrap}>
-                    <Text style={defaultStyles.description}>{listing.description}</Text>
-                </View>
-                <View style={defaultStyles.agentTitleWrap}>
-                    <Text style={defaultStyles.agentTitle}>AGENT DETAILS</Text>
-                </View>
-                <View style={defaultStyles.agentDetails}>
-                    <View style={defaultStyles.agentDetailsInner}>
-                        <Text style={defaultStyles.agentName}>{listing.listingAgent.name}</Text>
-                        <Text style={defaultStyles.agentDetail}>{listing.listingAgent.email}</Text>
-                        <Text style={defaultStyles.agentDetail}>{listing.listingAgent.phone}</Text>
-                        <Text style={defaultStyles.agentDetail}>Agent ID: {listing.listingAgent.id}</Text>
-                        <Text style={defaultStyles.agentDetail}>Office: {listing.listingOffice.name}</Text>
-                        <Text style={defaultStyles.agentDetail}>Office ID: {listing.listingOffice.id}</Text>
-                        <Text style={defaultStyles.agentDetail}>Office Phone: {listing.listingOffice.phone}</Text>
+                <View style={singleStyles.separator}/>
+
+                <View style={singleStyles.middleBox}>
+
+
+                    <View style={singleStyles.extraDetails}>
+                        <View style={singleStyles.middleTitleWrap}>
+                            <Text style={singleStyles.middleBoxTitle}>DETAILS</Text>
+                        </View>
+                        <Text style={singleStyles.extraDetail}>Year Built: <Text
+                            style={singleStyles.detailInner}>{listing.yearBuilt}</Text></Text>
+                        <Text style={singleStyles.extraDetail}>County: <Text
+                            style={singleStyles.detailInner}>{listing.county}</Text></Text>
+                        <Text style={singleStyles.extraDetail}>Days on Market: <Text
+                            style={singleStyles.detailInner}>{listing.daysOnMarket}</Text></Text>
+                        <Text style={singleStyles.extraDetail}>Listed: <Text style={singleStyles.detailInner}>
+                            <DateFromTimestamp time={listing.listingDate}/>
+                        </Text></Text>
+                        <Text style={singleStyles.extraDetail}>Type: <Text
+                            style={singleStyles.detailInner}>{listing_type}</Text></Text>
                     </View>
+
+
+
+                    <View style={singleStyles.agentDetails}>
+
+                        <View style={singleStyles.middleTitleWrap}>
+                            <Text style={singleStyles.middleBoxTitle}>AGENT</Text>
+                        </View>
+                        <View style={singleStyles.agentDetailsInner}>
+                            <Text style={singleStyles.agentName}>{listing.listingAgent.name}</Text>
+                            <Text style={singleStyles.agentDetail}>{listing.listingAgent.email}</Text>
+                            <Text style={singleStyles.agentDetail}>{listing.listingAgent.phone}</Text>
+                            <Text style={singleStyles.agentDetail}>Agent ID: {listing.listingAgent.id}</Text>
+                            <Text style={singleStyles.agentDetail}>Office: {listing.listingOffice.name}</Text>
+                            <Text style={singleStyles.agentDetail}>Office ID: {listing.listingOffice.id}</Text>
+                            <Text style={singleStyles.agentDetail}>Office Phone: {listing.listingOffice.phone}</Text>
+                        </View>
+                    </View>
+
+
+
                 </View>
+
+
+
+
+
+                <View style={singleStyles.separator}/>
+                <View style={singleStyles.descriptionWrap}>
+                    <Text style={singleStyles.description}>{listing.description}</Text>
+                </View>
+                <View style={singleStyles.separator}/>
+
+
+
+
+
+
+
             </View>
         )
     }
@@ -109,7 +156,7 @@ class SingleListing extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={defaultStyles.listingContainer}>
+                <View style={singleStyles.listingContainer}>
                     {this.renderListings()}
                 </View>
             </ScrollView>
