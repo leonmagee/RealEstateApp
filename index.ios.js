@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import Main from './App/Components/Main'
 
-// TESTING IMPORTS
-import SingleListing from './App/Components/SingleListing';
-var test_data = require('./App/Components/TestData');
+// // TESTING IMPORTS
+// import SingleListing from './App/Components/SingleListing';
+// var test_data = require('./App/Components/TestData');
 // import SwipeImage from './App/Components/SwipeImage';
 // import MapTest from './App/Components/MapTest';
 //import AnimationTest from './App/Components/AnimationTest'
@@ -31,17 +31,17 @@ class RealEstateApp extends Component {
         return (
             <NavigatorIOS
                 style={styles.container}
-                // initialRoute={{
-                //     component: Main,
-                //     title: 'Home',
-                // }}
                 initialRoute={{
-                    component: SingleListing,
-                    title: 'Test Listing',
-                    passProps: {
-                        listing: test_data
-                    }
+                    component: Main,
+                    title: 'Home',
                 }}
+                // initialRoute={{
+                //     component: SingleListing,
+                //     title: 'Test Listing',
+                //     passProps: {
+                //         listing: test_data
+                //     }
+                // }}
                 // initialRoute={{
                 //         component: SwipeImage,
                 //         title: 'Image Test',

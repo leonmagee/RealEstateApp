@@ -90,10 +90,7 @@ class SingleListing extends Component {
                     <Text style={singleStyles.detailItem}>{listing.size} SQFT</Text>
                 </View>
                 <View style={singleStyles.separator}/>
-
                 <View style={singleStyles.middleBox}>
-
-
                     <View style={singleStyles.extraDetails}>
                         <View style={singleStyles.middleTitleWrap}>
                             <Text style={singleStyles.middleBoxTitle}>DETAILS</Text>
@@ -110,45 +107,23 @@ class SingleListing extends Component {
                         <Text style={singleStyles.extraDetail}>Type: <Text
                             style={singleStyles.detailInner}>{listing_type}</Text></Text>
                     </View>
-
-
-
                     <View style={singleStyles.agentDetails}>
-
                         <View style={singleStyles.middleTitleWrap}>
-                            <Text style={singleStyles.middleBoxTitle}>AGENT</Text>
+                            <Text style={singleStyles.middleBoxTitle}>AGENT / OFFICE</Text>
                         </View>
-                        <View style={singleStyles.agentDetailsInner}>
-                            <Text style={singleStyles.agentName}>{listing.listingAgent.name}</Text>
-                            <Text style={singleStyles.agentDetail}>{listing.listingAgent.email}</Text>
-                            <Text style={singleStyles.agentDetail}>{listing.listingAgent.phone}</Text>
-                            <Text style={singleStyles.agentDetail}>Agent ID: {listing.listingAgent.id}</Text>
-                            <Text style={singleStyles.agentDetail}>Office: {listing.listingOffice.name}</Text>
-                            <Text style={singleStyles.agentDetail}>Office ID: {listing.listingOffice.id}</Text>
-                            <Text style={singleStyles.agentDetail}>Office Phone: {listing.listingOffice.phone}</Text>
-                        </View>
+                        <Text style={singleStyles.agentDetailHighlight}>{listing.listingAgent.name}</Text>
+                        <Text style={singleStyles.agentDetail}>{listing.listingAgent.email}</Text>
+                        <Text style={singleStyles.agentDetail}>Agent: {listing.listingAgent.phone}</Text>
+                        <Text style={singleStyles.agentDetail}>Agent ID: #{listing.listingAgent.id}</Text>
+                        <Text style={singleStyles.agentDetailHighlight}>{listing.listingOffice.name}</Text>
+                        <Text style={singleStyles.agentDetail}>Office ID: #{listing.listingOffice.id}</Text>
+                        <Text style={singleStyles.agentDetail}>Office: {listing.listingOffice.phone}</Text>
                     </View>
-
-
-
                 </View>
-
-
-
-
-
                 <View style={singleStyles.separator}/>
                 <View style={singleStyles.descriptionWrap}>
                     <Text style={singleStyles.description}>{listing.description}</Text>
                 </View>
-                <View style={singleStyles.separator}/>
-
-
-
-
-
-
-
             </View>
         )
     }

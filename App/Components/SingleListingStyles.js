@@ -98,6 +98,8 @@ var defaultStyles = StyleSheet.create({
     middleBox: {
         flexDirection: 'row',
         paddingTop: 6,
+        paddingLeft: 8,
+        paddingRight: 8,
     },
     middleTitleWrap: {
         padding: 4,
@@ -106,16 +108,16 @@ var defaultStyles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     middleBoxTitle: {
-        fontSize: 16,
-        color: '#333',
+        fontSize: 15,
+        color: '#555',
         fontWeight: 'bold',
         textAlign: 'center',
     },
-    extraDetails: { // wrap inside middle box
+    extraDetails: {
         padding: 7,
+        maxWidth: width * .5,
     },
     extraDetail: {
-        //width: width * .45,
         marginTop: 3,
         marginBottom: 3,
         fontWeight: 'bold',
@@ -125,29 +127,25 @@ var defaultStyles = StyleSheet.create({
     detailInner: {
         color: color2,
     },
-    descriptionWrap: {},
+    descriptionWrap: {
+        marginBottom: 10,
+    },
     description: {
         padding: 12,
         fontStyle: 'italic',
     },
     agentDetails: {
-        //alignItems: 'center',
-        //paddingBottom: 15,
         padding: 7,
+        flex: 1,
     },
-    agentDetailsInner: {
-        //width: width * .55,
-    },
-    agentName: {
+    agentDetailHighlight: {
         fontWeight: 'bold',
-        color: color2,
-        fontSize: 15,
+        color: color1,
+        fontSize: 14,
     },
     agentDetail: {
-        // fontWeight: 'bold',
-        // color: '#555',
         marginTop: 3,
-        marginBottom: 3,
+        marginBottom: 2,
         fontWeight: 'bold',
         color: '#555',
         fontSize: 13,
