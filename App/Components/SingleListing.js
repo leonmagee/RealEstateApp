@@ -62,11 +62,11 @@ class SingleListing extends Component {
                 {listing_images}
                 <View style={defaultStyles.priceButtonBlock}>
                     <Text style={defaultStyles.price}>${price_new}</Text>
-                    <Text style={defaultStyles.mls}>MLS #: {listing.id}</Text>
+                    <Text style={defaultStyles.mls}>#{listing.id}</Text>
                 </View>
-                <View style={defaultStyles.addressBlock}>
-                    <Text style={defaultStyles.street}>{listing.address.street}</Text>
-                    <Text style={defaultStyles.addressDetails}>
+                <View style={defaultStyles.addressBlockSingle}>
+                    <Text style={defaultStyles.streetSingle}>{listing.address.street}</Text>
+                    <Text style={defaultStyles.addressDetailsSingle}>
                         {listing.address.city}, {listing.address.state} {listing.address.zip}
                     </Text>
                 </View>
@@ -79,23 +79,28 @@ class SingleListing extends Component {
                     <Text style={defaultStyles.detailItem}>{listing.size} SQFT</Text>
                 </View>
                 <View style={defaultStyles.extraDetails}>
-                    <Text style={defaultStyles.extraDetail}>Year Built: {listing.yearBuilt}</Text>
-                    <Text style={defaultStyles.extraDetail}>County: {listing.county}</Text>
-                    <Text style={defaultStyles.extraDetail}>Days on Market: {listing.daysOnMarket}</Text>
-                    <Text style={defaultStyles.extraDetail}>Listing Date: {listing.listingDate}</Text>
-                    <Text style={defaultStyles.extraDetail}>Type: {listing.listingType}</Text>
+                    <Text style={defaultStyles.extraDetail}>Year Built: <Text style={defaultStyles.detailInner}>{listing.yearBuilt}</Text></Text>
+                    <Text style={defaultStyles.extraDetail}>County: <Text style={defaultStyles.detailInner}>{listing.county}</Text></Text>
+                    <Text style={defaultStyles.extraDetail}>Days on Market: <Text style={defaultStyles.detailInner}>{listing.daysOnMarket}</Text></Text>
+                    <Text style={defaultStyles.extraDetail}>Listing Date: <Text style={defaultStyles.detailInner}>{listing.listingDate}</Text></Text>
+                    <Text style={defaultStyles.extraDetail}>Type: <Text style={defaultStyles.detailInner}>{listing.listingType}</Text></Text>
                 </View>
-                <View>
+                <View style={defaultStyles.descriptionWrap}>
                     <Text style={defaultStyles.description}>{listing.description}</Text>
                 </View>
+                <View style={defaultStyles.agentTitleWrap}>
+                    <Text style={defaultStyles.agentTitle}>AGENT DETAILS</Text>
+                </View>
                 <View style={defaultStyles.agentDetails}>
-                    <Text style={defaultStyles.agentDetail}>{listing.listingAgent.name}</Text>
-                    <Text style={defaultStyles.agentDetail}>{listing.listingAgent.email}</Text>
-                    <Text style={defaultStyles.agentDetail}>{listing.listingAgent.phone}</Text>
-                    <Text style={defaultStyles.agentDetail}>Agent ID: {listing.listingAgent.id}</Text>
-                    <Text style={defaultStyles.agentDetail}>Office: {listing.listingOffice.name}</Text>
-                    <Text style={defaultStyles.agentDetail}>Office ID: {listing.listingOffice.id}</Text>
-                    <Text style={defaultStyles.agentDetail}>Office Phone: {listing.listingOffice.phone}</Text>
+                    <View style={defaultStyles.agentDetailsInner}>
+                        <Text style={defaultStyles.agentName}>{listing.listingAgent.name}</Text>
+                        <Text style={defaultStyles.agentDetail}>{listing.listingAgent.email}</Text>
+                        <Text style={defaultStyles.agentDetail}>{listing.listingAgent.phone}</Text>
+                        <Text style={defaultStyles.agentDetail}>Agent ID: {listing.listingAgent.id}</Text>
+                        <Text style={defaultStyles.agentDetail}>Office: {listing.listingOffice.name}</Text>
+                        <Text style={defaultStyles.agentDetail}>Office ID: {listing.listingOffice.id}</Text>
+                        <Text style={defaultStyles.agentDetail}>Office Phone: {listing.listingOffice.phone}</Text>
+                    </View>
                 </View>
             </View>
         )
