@@ -13,6 +13,7 @@ var {
     ScrollView,
     Image,
     TouchableHighlight,
+    ActivityIndicator,
 } = ReactNative;
 
 class SearchResults extends Component {
@@ -20,7 +21,7 @@ class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
+            isLoading: true,
             error: false,
             city: props.city,
             listings: props.results,
@@ -45,10 +46,19 @@ class SearchResults extends Component {
             let price_new = listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
             return (
                 <View style={defaultStyles.snippetWrap} key={index}>
-                    <Image
-                        style={defaultStyles.listingImage}
-                        source={{uri: image_url}}
-                    />
+                    <View style={defaultStyles.listingImageWrap}>
+                        <View style={defaultStyles.indicatorWrap}>
+                            <ActivityIndicator
+                                animating={this.state.isLoading}
+                                style={defaultStyles.indicator}
+                                color="#333"
+                                size="large"></ActivityIndicator>
+                        </View>
+                        <Image
+                            style={defaultStyles.listingImage}
+                            source={{uri: image_url}}
+                        />
+                    </View>
                     <View style={defaultStyles.priceButtonBlock}>
                         <Text style={defaultStyles.price}>${price_new}</Text>
                         <TouchableHighlight

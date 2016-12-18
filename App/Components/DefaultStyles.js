@@ -7,7 +7,6 @@ import {
 
 /**
  * Default Styles
- * @todo refactor this - remove old CR stuff
  * @todo choose new color scheme?
  */
 var width = Dimensions.get('window').width;
@@ -35,8 +34,6 @@ var defaultStyles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 8,
         marginBottom: 12,
-        //marginBottom: 10,
-        //marginTop: 10,
         justifyContent: 'center',
         alignSelf: 'stretch',
     },
@@ -113,42 +110,26 @@ var defaultStyles = StyleSheet.create({
         shadowOpacity: 0.1,
         paddingBottom: 5,
     },
-    listingContainer: {},
-    listingWrap: {},
+    // listingContainer: {},
+    // listingWrap: {},
+    listingImageWrap: {
+        backgroundColor: '#F7F7F7',
+    },
     listingImage: {
         flex: 1,
         height: 230,
     },
+    indicatorWrap: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
 
-
-    //
-    // listingButtonsWrap: {
-    //     flex: 1,
-    // },
-    // listingImageButtonLeft: {
-    //     backgroundColor: 'rgba(0,0,0,0.4)',
-    //     color: '#FFF',
-    //     fontWeight: 'bold',
-    //     fontSize: 11,
-    //     padding: 4,
-    //     borderRadius: 5,
-    //     position: 'absolute',
-    //     bottom: 5,
-    //     left: 5,
-    // },
-    // listingImageButtonRight: {
-    //     position: 'absolute',
-    //     bottom: 5,
-    //     right: 5,
-    // },
-    // listingImageButtonRightText: {
-    //     backgroundColor: 'rgba(0,0,0,0.4)',
-    //     color: '#FFF',
-    //     fontWeight: 'bold',
-    //     fontSize: 11,
-    //     padding: 4,
-    //     borderRadius: 5,
-    // },
+    },
+    indicator: {
+        height: 230,
+    },
     priceButtonBlock: {
         flexDirection: 'row',
     },
@@ -161,15 +142,6 @@ var defaultStyles = StyleSheet.create({
         paddingBottom: 3,
         flex: 1,
     },
-    // mls: {
-    //     fontSize: 20,
-    //     color: '#444',
-    //     paddingTop: 8,
-    //     paddingBottom: 7,
-    //     marginLeft: 20,
-    //     flex: 1,
-    //     fontWeight: 'bold',
-    // },
     viewDetailsButton: {
         backgroundColor: color1,
         marginTop: 8,
@@ -210,13 +182,10 @@ var defaultStyles = StyleSheet.create({
         padding: 3,
         fontSize: 12,
     },
-
-
     listingDetails: {
         flexDirection: 'row',
         paddingTop: 5,
         paddingBottom: 5,
-        //justifyContent: 'center',
         justifyContent: 'center',
     },
     detailItem: {
@@ -231,70 +200,6 @@ var defaultStyles = StyleSheet.create({
     detailSvg: {
         marginLeft: 6,
     },
-
-    //
-    // extraDetails: {
-    //     padding: 7,
-    //     //flexDirection: 'row',
-    //     //flexWrap: 'wrap',
-    //     alignItems: 'center',
-    //     borderTopColor: '#F4F4F4',
-    //     borderTopWidth: 1,
-    //     //justifyContent: 'space-around',
-    // },
-    // extraDetail: {
-    //     //height: 45,
-    //     width: width * .45,
-    //     //flex: 1,
-    //     marginTop: 4,
-    //     marginBottom: 4,
-    //     fontWeight: 'bold',
-    //     color: '#555',
-    // },
-    // detailInner: {
-    //     color: color2,
-    // },
-    // descriptionWrap: {
-    //     borderTopColor: '#F4F4F4',
-    //     borderTopWidth: 1,
-    //     borderBottomColor: '#F4F4F4',
-    //     borderBottomWidth: 1,
-    // },
-    // description: {
-    //     padding: 12,
-    //     fontStyle: 'italic',
-    // },
-    // agentDetails: {
-    //     //padding: 7,
-    //     //backgroundColor: 'red',
-    //     alignItems: 'center',
-    //     paddingBottom: 15,
-    // },
-    // agentDetailsInner: {
-    //     //backgroundColor: 'blue',
-    //     width: width * .55,
-    // },
-    // agentTitleWrap: {
-    //     borderBottomColor: '#F4F4F4',
-    //     borderBottomWidth: 1,
-    //     padding: 4,
-    //     marginBottom: 5,
-    // },
-    // agentTitle: {
-    //     fontSize: 17,
-    //     color: '#333',
-    //     fontWeight: 'bold',
-    //     textAlign: 'center',
-    // },
-    // agentName: {
-    //     fontWeight: 'bold',
-    //     color: color2,
-    //     fontSize: 15,
-    // },
-    // agentDetail: {
-    //     fontWeight: 'bold',
-    //     color: '#555',
-    // },
     mapContainer: {
         flex: 1,
         alignItems: 'center',

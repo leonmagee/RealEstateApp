@@ -18,6 +18,19 @@ var defaultStyles = StyleSheet.create({
         height: 1,
         backgroundColor: '#F2F2F2',
     },
+    listingImageWrap: {
+        backgroundColor: '#F7F7F7',
+    },
+    indicatorWrap: {
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
+    indicator: {
+        height: 300,
+    },
     listingImage: {
         flex: 1,
         height: 300,
@@ -97,6 +110,7 @@ var defaultStyles = StyleSheet.create({
     },
     middleBox: {
         flexDirection: 'row',
+        //justifyContent: 'center',
         paddingTop: 6,
         paddingLeft: 8,
         paddingRight: 8,
@@ -115,7 +129,8 @@ var defaultStyles = StyleSheet.create({
     },
     extraDetails: {
         padding: 7,
-        maxWidth: width * .5,
+        flex: 1,
+        //maxWidth: width * .5,
     },
     extraDetail: {
         marginTop: 3,

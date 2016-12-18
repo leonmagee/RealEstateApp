@@ -13,7 +13,8 @@ var {
     View,
     ScrollView,
     Image,
-    TouchableHighlight,
+    //TouchableHighlight,
+    ActivityIndicator,
 } = ReactNative;
 
 class SingleListing extends Component {
@@ -21,7 +22,7 @@ class SingleListing extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: false,
+            isLoading: true,
             error: false,
             listing: props.listing,
             image_url: props.listing.images[0].replace('http:', 'https:'),
@@ -31,16 +32,16 @@ class SingleListing extends Component {
         }
     }
 
-    nextImage() {
-        let new_current_image = ( this.state.current_image + 1 );
-        if (new_current_image > this.state.image_count) {
-            new_current_image = 1;
-        }
-        this.setState({
-            current_image: new_current_image,
-            image_url: this.state.listing.images[( new_current_image - 1 )].replace('http:', 'https:'),
-        })
-    }
+    // nextImage() {
+    //     let new_current_image = ( this.state.current_image + 1 );
+    //     if (new_current_image > this.state.image_count) {
+    //         new_current_image = 1;
+    //     }
+    //     this.setState({
+    //         current_image: new_current_image,
+    //         image_url: this.state.listing.images[( new_current_image - 1 )].replace('http:', 'https:'),
+    //     })
+    // }
 
     renderListings() {
         let price_new = this.state.listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
@@ -58,8 +59,6 @@ class SingleListing extends Component {
             </Image>;
         }
 
-        console.log(listing.listingDate);
-
         String.prototype.capitalize = function () {
             return this.charAt(0).toUpperCase() + this.slice(1);
         }
@@ -67,8 +66,17 @@ class SingleListing extends Component {
         const listing_type = listing.listingType.capitalize();
 
         return (
-            <View style={singleStyles.listingWrap}>
-                {listing_images}
+            <View>
+                <View style={singleStyles.listingImageWrap}>
+                    <View style={singleStyles.indicatorWrap}>
+                        <ActivityIndicator
+                            animating={this.state.isLoading}
+                            style={singleStyles.indicator}
+                            color="#333"
+                            size="large"></ActivityIndicator>
+                    </View>
+                    {listing_images}
+                </View>
                 <View style={singleStyles.priceButtonBlock}>
                     <Text style={singleStyles.price}>${price_new}</Text>
                     <Text style={singleStyles.mls}>#{listing.id}</Text>
