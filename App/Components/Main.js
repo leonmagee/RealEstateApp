@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SearchResults from './SearchResults';
 import MapSearch from './MapSearch';
 var ReactNative = require('react-native');
-var defaultStyles = require('./DefaultStyles');
+var defaultStyles = require('../Styles/DefaultStyles');
 var api = require('../Utils/api');
 
 var {

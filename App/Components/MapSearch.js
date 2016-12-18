@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 var ReactNative = require('react-native');
-var defaultStyles = require('./DefaultStyles');
+//var defaultStyles = require('../Styles/DefaultStyles');
 import MapView from 'react-native-maps';
 //var CustomMarkerView = require('./CustomMarkerView');
 var PriceMarker = require('./PriceMarker');

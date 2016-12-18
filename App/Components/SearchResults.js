@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 var ReactNative = require('react-native');
-var defaultStyles = require('./DefaultStyles');
+//var defaultStyles = require('../Styles/DefaultStyles');
+var snippetStyles = require('../Styles/SnippetStyles');
 var SingleListing = require('./SingleListing');
 var SvgElement = require('./SvgElement');
 var svg_baths = require('../SVG/baths.js');
@@ -45,43 +46,43 @@ class SearchResults extends Component {
             let image_url = listing.images[0].replace('http:', 'https:');
             let price_new = listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
             return (
-                <View style={defaultStyles.snippetWrap} key={index}>
-                    <View style={defaultStyles.listingImageWrap}>
-                        <View style={defaultStyles.indicatorWrap}>
+                <View style={snippetStyles.snippetWrap} key={index}>
+                    <View style={snippetStyles.listingImageWrap}>
+                        <View style={snippetStyles.indicatorWrap}>
                             <ActivityIndicator
                                 animating={this.state.isLoading}
-                                style={defaultStyles.indicator}
+                                style={snippetStyles.indicator}
                                 color="#333"
                                 size="large"></ActivityIndicator>
                         </View>
                         <Image
-                            style={defaultStyles.listingImage}
+                            style={snippetStyles.listingImage}
                             source={{uri: image_url}}
                         />
                     </View>
-                    <View style={defaultStyles.priceButtonBlock}>
-                        <Text style={defaultStyles.price}>${price_new}</Text>
+                    <View style={snippetStyles.priceButtonBlock}>
+                        <Text style={snippetStyles.price}>${price_new}</Text>
                         <TouchableHighlight
                             onPress={() => this.singleListing(listing)}
-                            style={defaultStyles.viewDetailsButton}
+                            style={snippetStyles.viewDetailsButton}
                             underlayColor="#E97C5F"
                         >
-                            <Text style={defaultStyles.viewDetails}>VIEW DETAILS</Text>
+                            <Text style={snippetStyles.viewDetails}>VIEW DETAILS</Text>
                         </TouchableHighlight>
                     </View>
-                    <View style={defaultStyles.addressBlock}>
-                        <Text style={defaultStyles.street}>{listing.address.street}</Text>
-                        <Text style={defaultStyles.addressDetails}>
+                    <View style={snippetStyles.addressBlock}>
+                        <Text style={snippetStyles.street}>{listing.address.street}</Text>
+                        <Text style={snippetStyles.addressDetails}>
                             {listing.address.city}, {listing.address.state} {listing.address.zip}
                         </Text>
                     </View>
-                    <View style={defaultStyles.listingDetails}>
+                    <View style={snippetStyles.listingDetails}>
                         <SvgElement svg_data={svg_beds}/>
-                        <Text style={defaultStyles.detailItem}>{listing.beds} BEDS</Text>
+                        <Text style={snippetStyles.detailItem}>{listing.beds} BEDS</Text>
                         <SvgElement svg_data={svg_baths}/>
-                        <Text style={defaultStyles.detailItem}>{listing.baths.full} BATHS</Text>
+                        <Text style={snippetStyles.detailItem}>{listing.baths.full} BATHS</Text>
                         <SvgElement svg_data={svg_sqft}/>
-                        <Text style={defaultStyles.detailItem}>{listing.size} SQFT</Text>
+                        <Text style={snippetStyles.detailItem}>{listing.size} SQFT</Text>
                     </View>
                 </View>
             )
@@ -91,7 +92,7 @@ class SearchResults extends Component {
     render() {
         return (
             <ScrollView>
-                <View style={defaultStyles.snippetContainer}>
+                <View style={snippetStyles.snippetContainer}>
                     {this.renderListings()}
                 </View>
             </ScrollView>

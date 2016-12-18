@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SwipeImage from './SwipeImage';
 var ReactNative = require('react-native');
 var DateFromTimestamp = require('./DateFromTimestamp');
-var singleStyles = require('./SingleListingStyles');
+var singleStyles = require('../Styles/SingleListingStyles');
 var SvgElement = require('./SvgElement');
 var svg_baths = require('../SVG/baths.js');
 var svg_beds = require('../SVG/beds.js');
