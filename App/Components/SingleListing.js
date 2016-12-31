@@ -32,17 +32,6 @@ class SingleListing extends Component {
         }
     }
 
-    // nextImage() {
-    //     let new_current_image = ( this.state.current_image + 1 );
-    //     if (new_current_image > this.state.image_count) {
-    //         new_current_image = 1;
-    //     }
-    //     this.setState({
-    //         current_image: new_current_image,
-    //         image_url: this.state.listing.images[( new_current_image - 1 )].replace('http:', 'https:'),
-    //     })
-    // }
-
     renderListings() {
         let price_new = this.state.listing.listPrice.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,');
         let listing = this.state.listing;

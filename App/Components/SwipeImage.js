@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-var defaultStyles = require('../Styles/DefaultStyles');
+var singleListingStyles = require('../Styles/SingleListingStyles');
 import {
     StyleSheet,
     Text,
@@ -52,12 +52,11 @@ class SwipeImage extends Component {
     }
 
     render() {
-
-        let images = this.state.images.map((image, index) => {
+        const images = this.state.images.map((image, index) => {
             return (
                 <Image
                     key={index}
-                    style={defaultStyles.listingImage}
+                    style={singleListingStyles.listingImage}
                     source={{uri: image}}>
                 </Image>
             )
