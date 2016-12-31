@@ -8,12 +8,18 @@ import {
 /**
  * Default Styles
  * @todo choose new color scheme?
+ * @todo make variables accessible in all stylesheets by importing a separate array?
+ * @todo array or object of default colors...
  */
 var width = Dimensions.get('window').width;
 var color1 = '#E95637'; // light red
 // darker red - #E76348
 var color2 = '#04C0C5'; // blue
 // darker blue - #4EB3A2
+/**
+ * @todo move this ^^^
+ */
+
 var defaultStyles = StyleSheet.create({
     snippetContainer: {
         backgroundColor: '#F5F5F5',
@@ -79,25 +85,28 @@ var defaultStyles = StyleSheet.create({
         textAlign: 'center',
     },
     addressBlock: {
-        backgroundColor: '#FAFAFA',
-        borderColor: '#F4F4F4',
-        borderWidth: 1,
-        margin: 10,
-        paddingTop: 3,
-        paddingBottom: 3,
-        paddingLeft: 5,
-        paddingRight: 5,
+        marginTop: 1,
+        marginBottom: 10,
+        paddingTop: 4,
+        paddingBottom: 4,
+        borderTopColor: '#F2F2F2',
+        borderBottomColor: '#F2F2F2',
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
     },
     street: {
         color: '#555',
         fontWeight: 'bold',
         padding: 3,
+        textAlign: 'center',
+        fontSize: 17,
     },
     addressDetails: {
         color: '#777',
         fontWeight: 'bold',
         padding: 3,
-        fontSize: 12,
+        fontSize: 15,
+        textAlign: 'center',
     },
     listingDetails: {
         flexDirection: 'row',

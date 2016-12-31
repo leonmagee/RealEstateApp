@@ -13,7 +13,10 @@ var {
     TextInput,
     TouchableHighlight,
     ActivityIndicator,
+    Dimensions,
 } = ReactNative;
+
+var width = Dimensions.get('window').width;
 
 /**
  * What to do first? Welcome screen with search input - search for properties, with some basic
@@ -21,35 +24,28 @@ var {
  */
 
 var styles = StyleSheet.create({
-    container: {
+    imageContainer: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         width: null, // allows centering of content with image - otherwise image width is imported
         height: null,
     },
-    // titleWrap: {
-    //     backgroundColor: 'rgba(0,0,0,0.5)',
-    //     borderWidth: 1,
-    //     borderColor: 'rgba(0,0,0,0.5)',
-    //     paddingTop: 2,
-    //     paddingBottom: 3,
-    //     paddingLeft: 7,
-    //     paddingRight: 7,
-    //     borderRadius: 5,
-    //     marginBottom: 25,
-    // },
-    // titleInner: {
-    //     color: '#F7F7F7',
-    //     fontSize: 28,
-    //     textAlign: 'center',
-    //     fontWeight: 'bold',
-    //     // textShadowColor: '#000',
-    //     // textShadowOffset: {width: 1, height: 1},
-    // },
+    homeWrap: {
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        width: width,
+        flex: 1,
+        paddingLeft: 55,
+        paddingRight: 55,
+        justifyContent: 'center',
+        //alignItems: 'center',
+    },
     homeLogo: {
         resizeMode: 'contain',
-        width: null,
+        width: null, // prevents overflow issues
+        height: 120,
+        marginBottom: 20,
+        marginRight: 10,
     },
     searchInput: {
         marginBottom: 12,
@@ -92,7 +88,6 @@ class Main extends Component {
         });
     }
 
-
     searchMap() {
         this.setState({
             isLoading: true
@@ -119,11 +114,9 @@ class Main extends Component {
 
     render() {
         return (
-            <Image source={require('../Assets/img/homepage-dark-bg.png')} style={styles.container}>
-                <View style={defaultStyles.homeWrap}>
-                    <View style={styles.titleWrap}>
-                        <Image source={require('../Assets/img/sd-search-logo.png')} style={styles.homeLogo}></Image>
-                    </View>
+            <Image source={require('../Assets/img/homepage-dark-bg.png')} style={styles.imageContainer}>
+                <View style={styles.homeWrap}>
+                    <Image source={require('../Assets/img/sd-search-logo-new.png')} style={styles.homeLogo}></Image>
                     <TextInput
                         style={[styles.searchInput, defaultStyles.input]}
                         autoCapitalize="none"
@@ -140,18 +133,20 @@ class Main extends Component {
                         onChangeText={(zip) => this.setState({zip})}
                         autoCorrect={false}
                     />
-                    <TouchableHighlight
-                        style={[defaultStyles.button, defaultStyles.buttonColorBlue]}
-                        onPress={() => this.searchAPI()}
-                        underlayColor="#4EB3A2">
-                        <Text style={defaultStyles.buttonText}>SEE LISTINGS</Text>
-                    </TouchableHighlight>
-                    <TouchableHighlight
-                        style={[defaultStyles.button, defaultStyles.buttonColorRed]}
-                        onPress={() => this.searchMap()}
-                        underlayColor="#E76348">
-                        <Text style={defaultStyles.buttonText}>MAP SEARCH</Text>
-                    </TouchableHighlight>
+                    <View style={defaultStyles.buttonWrap}>
+                        <TouchableHighlight
+                            style={[defaultStyles.button, defaultStyles.buttonColorBlue]}
+                            onPress={() => this.searchAPI()}
+                            underlayColor="#4EB3A2">
+                            <Text style={defaultStyles.buttonText}>LISTINGS</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                            style={[defaultStyles.button, defaultStyles.buttonColorRed]}
+                            onPress={() => this.searchMap()}
+                            underlayColor="#E76348">
+                            <Text style={defaultStyles.buttonText}>MAP</Text>
+                        </TouchableHighlight>
+                    </View>
                     <ActivityIndicator
                         animating={this.state.isLoading}
                         color="#FFF"

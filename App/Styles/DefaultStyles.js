@@ -15,35 +15,34 @@ var color1 = '#E95637'; // light red
 var color2 = '#04C0C5'; // blue
 // darker blue - #4EB3A2
 var defaultStyles = StyleSheet.create({
-    homeWrap: {
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        width: width,
-        flex: 1,
-        paddingLeft: 55,
-        paddingRight: 55,
-        paddingTop: 20,
-    },
     buttonText: {
         fontSize: 18,
         fontWeight: 'bold',
         color: '#FAFAFA',
         alignSelf: 'center',
     },
+    buttonWrap: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 15,
+    },
     button: {
         height: 45,
         borderWidth: 1,
         borderRadius: 8,
-        marginBottom: 12,
+        flex: 1,
         justifyContent: 'center',
         alignSelf: 'stretch',
     },
     buttonColorBlue: {
         backgroundColor: '#08C5B1',
         borderColor: '#08C5B1',
+        marginRight: 5,
     },
     buttonColorRed: {
         backgroundColor: '#E97C5F',
         borderColor: '#E97C5F',
+        marginLeft: 5,
     },
     buttonColorYellow: {
         backgroundColor: '#EFD14F',
