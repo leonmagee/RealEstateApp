@@ -14,7 +14,7 @@ var color1 = '#E95637'; // light red
 // darker red - #E76348
 var color2 = '#04C0C5'; // blue
 // darker blue - #4EB3A2
-var defaultStyles = StyleSheet.create({
+export default defaultStyles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
         fontWeight: 'bold',
@@ -95,4 +95,4 @@ var defaultStyles = StyleSheet.create({
         justifyContent: 'center',
     }
 });
-module.exports = defaultStyles;
+//module.exports = defaultStyles;

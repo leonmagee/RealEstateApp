@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
 import SearchResults from './SearchResults';
 import MapSearch from './MapSearch';
-var ReactNative = require('react-native');
-var defaultStyles = require('../Styles/DefaultStyles');
-var api = require('../Utils/api');
+//var ReactNative = require('react-native');
+//console.log(ReactNative);
+//var defaultStyles = require('../Styles/DefaultStyles');
+import defaultStyles from '../Styles/DefaultStyles';
+//var api = require('../Utils/api');
+import api from '../Utils/api';
 
-var {
+import {
     Text,
     View,
     StyleSheet,
@@ -14,7 +17,7 @@ var {
     TouchableHighlight,
     ActivityIndicator,
     Dimensions,
-} = ReactNative;
+} from 'react-native';
 
 var width = Dimensions.get('window').width;
 
