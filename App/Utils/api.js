@@ -1,7 +1,8 @@
 var api = {
     getToken() {
         //let license_key = '877C-0626-DE4C-54BF'; // Chicago
-        let license_key = '2684-E2AF-6385-05BA'; // San Diego
+        //let license_key = '2684-E2AF-6385-05BA'; // San Diego
+        let license_key = 'C698-55BF-F769-2B69'; // San Diego
         let slipstream_version = 'v20160226';
 
         let token_url = `https://slipstream.homejunction.com/ws/api/authenticate?license=${license_key}&version=${slipstream_version}`;
